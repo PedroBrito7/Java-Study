@@ -11,24 +11,15 @@ public class Jogador {
         }
     }
 
-    public Time getTime() {
-        return time;
-    }
+    public Jogador(String nome) {this.nome = nome; }
 
-    public void setTime(Time time) {
-        this.time = time;
-    }
+    public Time getTime() {return time; }
 
+    public void setTime(Time time) { this.time = time; }
 
-    public Jogador(String nome) {
-        this.nome = nome;
-    }
-    public String getNome(){
-        return nome;
-    }
-    public void setNome(String nome){
-        this.nome = nome;
-    }
+    public String getNome(){return nome ;}
+
+    public void setNome(String nome){ this.nome = nome;}
 
 
 }
