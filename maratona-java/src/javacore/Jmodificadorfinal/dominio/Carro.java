@@ -6,7 +6,7 @@ public class Carro {
     public final Comprador COMPRADOR = new Comprador();
 
     public final void imprime(){
-        System.out.println(this.nom);
+        System.out.println(this.nome);
     }
 
     public String getNome() {
