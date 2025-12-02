@@ -1,6 +1,7 @@
 package javacore.Minterfaces.dominio;
 
 public class DatabaseLoader implements DataLoader, DataRemover{
+    // private -> default -> protected-> public -> ordem das classes
 
     @Override
     public void load() {
@@ -16,5 +17,8 @@ public class DatabaseLoader implements DataLoader, DataRemover{
     @Override
     public void checkPermission() {
         System.out.println("Checking permision in data base");
+    }
+    public static void retrieveMaxDataSize{
+        System.out.println("Dentro dao retrieveMaxDataSize na classe databaseloader");
     }
 }
