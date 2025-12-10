@@ -1,0 +1,283 @@
+Guia Avançado de Exceptions em Java
+1. Terminologia básica e hierarquia
+Throwable — raiz da hierarquia (tem estado de stack trace, causa, suppressed).
+Error — problemas graves da JVM (OutOfMemoryError, StackOverflowError). Não tratar em geral.
+Exception — erros de aplicação.
+Checked — precisam ser declaradas/ tratadas (ex.: IOException, SQLException).
+Unchecked (RuntimeException) — não exigidas pelo compilador (ex.: NullPointerException, IllegalArgumentException).
+
+Observação: Error e Throwable não devem ser capturados em aplicações normais (capturar Throwable pode esconder problemas sérios).
+
+
+2. Como exceptions são criadas e propagadas (stack unwinding)
+
+Quando uma exceção é lançada, a JVM cria uma instância (podemos customizar mensagem e causa) e gera o stack trace (custoso).
+A exceção sobe a pilha (unwinding): cada frame é desempilhado até encontrar um catch compatível.
+Se nenhum catch tratar, a thread termina (em main -> app finaliza) e a stack trace vai para System.err.
+Nota de performance: criação de exceção (especialmente fillInStackTrace) é cara — evitar usar exceptions para controle de fluxo em loops críticos.
+
+3. Checked vs Unchecked — design e controvérsias
+Checked forçam tratamento, útil quando há falha esperada do ambiente (I/O, rede).
+Unchecked são geralmente erros de programação.
+Padrões arquiteturais:
+Em bibliotecas de baixo nível (DAO, I/O) usar checked para coisas recuperáveis.
+Em APIs modernas (muitos frameworks) preferem unchecked e documentam (RuntimeException wrappers).
+Exception translation: converter SQLException em DataAccessException (runtime) em camadas superiores para não poluir contratos.
+
+4. Exception chaining (causa)
+Use new MyException("msg", cause) para preservar a causa original.
+try {
+    // ...
+} catch (IOException e) {
+    throw new MyBusinessException("falha ao ler", e);
+}
+getCause() retorna a causa. initCause(Throwable) pode ser usado para ligar depois (uma vez).
+
+
+5. Suppressed exceptions (try-with-resources)
+try-with-resources automaticamente fecha recursos; se close() lança durante o fechamento e já há outra exceção ativa, o close() vira suppressed.
+try (MyResource r = ...) {
+    // ...
+}
+// se falhar no try e no close, a exceção do try é a principal e a do close é "suppressed"
+
+
+APIs:
+Throwable#addSuppressed(Throwable)
+Throwable#getSuppressed()
+printStackTrace() exibe suppressed. Bom para diagnóstico.
+
+6. finally vs try-with-resources
+
+finally: garantia de execução; deve fechar recursos manualmente. Tem a vantagem da compatibilidade com Java <7.
+
+try-with-resources (Java 7+): fecha automaticamente; preserva suppressed; menos propenso a vazamentos.
+
+try (BufferedReader br = new BufferedReader(...)) {
+    // ...
+}
+
+
+Recomendo preferir try-with-resources para recursos que implementam AutoCloseable.
+
+7. Multi-catch (capturar múltiplos tipos numa mesma cláusula)
+try {
+    // ...
+} catch (IOException | SQLException ex) {
+    // tratamento comum
+}
+
+
+Regras e detalhes:
+
+ex é efetivamente final — você não pode reatribuir ex.
+
+Não pode listar tipos na mesma hierarquia (ex.: Exception | IOException é inválido).
+
+Útil para evitar duplicação quando o tratamento é idêntico.
+
+8. Rethrow com inferência de tipo (Java 7+)
+
+O compilador pode inferir que um catch re-lança o tipo exato que foi capturado, permitindo assinaturas com throws precisas.
+
+try {
+    // ...
+} catch (IOException | SQLException e) {
+    throw e; // compilador faz a inferência correta
+}
+
+9. Regras de return + finally (armadilhas)
+
+Valor do return é avaliado (ou guardado) antes do finally executar; o finally roda antes do retorno.
+
+Se finally também contém return, esse valor prevalece (isso é uma armadilha: evita sempre fazer return em finally).
+
+int f() {
+    try { return 1; }
+    finally { return 2; } // método retorna 2 — evite!
+}
+
+
+Se o objeto retornado for mutável e finally o modifica, o chamador verá as mudanças (porque o objeto é o mesmo).
+
+10. fillInStackTrace() e manipulação do stack trace
+
+fillInStackTrace() atualiza a stack trace do Throwable. Útil quando você quer resetar a stack trace para o ponto atual (cuidado: é caro).
+
+setStackTrace(StackTraceElement[]) permite customizar/limpar stack trace (usável para performance ou para não vazar detalhes).
+
+Padrão: não modifique stack traces a não ser por razões bem justificadas.
+
+11. Performance — custo de exceções
+
+Criar e preencher stack trace tem custo significativo. Evitar em caminhos críticos (loops).
+
+Alternativas: checagens condicionais (if) para evitar lançar exceções previsíveis.
+
+Em micro-benchmarks, exceptions podem matar performance.
+
+12. Boas práticas de design de exceptions
+
+Crie exceções customizadas específicas (ex.: UserNotFoundException extends RuntimeException).
+
+Use mensagens claras e inclua contexto (IDs, parâmetros) — isso facilita debugging.
+
+Não abuse de exceptions checked em APIs públicas onde cada chamador deve tratar — prefira unchecked se for erro não recuperável.
+
+Quando envolver I/O ou rede, preserve causa (new XException(msg, cause)).
+
+Não use exceptions para controle de fluxo.
+
+13. Padrões de tratamento
+
+Fail-fast: Detecte e lance cedo (Objects.requireNonNull), reduz custo de debugging.
+
+Exception translation: Converter exceções de baixo nível para exceções de domínio.
+
+Exception wrapping: Encapsular checked em runtime em camadas que não querem propagar checked.
+
+Normalize errors: Em APIs públicas, documente e normalize tipos de erros retornados (p. ex. exceptions específicas para códigos de erro).
+
+14. Concurrency e Exceptions
+
+Threads: se uma exceção não tratada ocorrer numa thread, a thread morre; use Thread.setUncaughtExceptionHandler() para tratamento global.
+
+Future.get() e CompletableFuture.join() propagam exceções encadeadas (ExecutionException ou CompletionException). Lembre de desempacotar getCause().
+
+Em frameworks (Executors), componentes costumam capturar/expor exceções; projete para lidar com isso.
+
+Exemplo com ExecutionException:
+
+Future<?> f = executor.submit(() -> { throw new RuntimeException("boom"); });
+try {
+    f.get();
+} catch (ExecutionException ex) {
+    Throwable cause = ex.getCause(); // RuntimeException("boom")
+}
+
+15. Logging e diagnóstico
+
+Não faça e.printStackTrace() em produção — use logging estruturado (SLF4J, Log4j2) com níveis.
+
+Logar a pilha inteira é valioso; inclua contexto (userId, requestId).
+
+Evite "swallowing" exceptions: capturar e não registrar pode tornar problemas invisíveis.
+
+16. Exceções serializáveis
+
+Throwable implementa Serializable. Se planear enviar exceptions por rede, mantenha atenção em campos não-serializáveis.
+
+Evite serializar stack traces sensíveis.
+
+17. Exemplos avançados — snippets úteis
+Exemplo: try-with-resources e suppressed
+class R implements AutoCloseable {
+    private final String name;
+    R(String name) { this.name = name; }
+    public void close() {
+        throw new RuntimeException("close failed: " + name);
+    }
+}
+
+public static void main(String[] args) {
+    try (R r = new R("r1")) {
+        throw new RuntimeException("try failed");
+    } catch (RuntimeException e) {
+        System.out.println("Main catch: " + e.getMessage());
+        for (Throwable s : e.getSuppressed()) {
+            System.out.println("Suppressed: " + s.getMessage());
+        }
+    }
+}
+
+
+Saída mostra a exceção original e a close como suppressed.
+
+Exemplo: exception chaining e rethrow
+public void metodo() throws MyCheckedException {
+    try {
+        // I/O...
+    } catch (IOException e) {
+        throw new MyCheckedException("falha", e); // preserve cause
+    }
+}
+
+Exemplo: rethrow com inferência de tipo (Java 7+)
+public void precisaLancar() throws IOException {
+    try {
+        mayThrowIOExceptionOrSQLException();
+    } catch (IOException | SQLException e) {
+        throw e; // compilador aceita e infere
+    }
+}
+
+Exemplo: evitar return em finally (anti-pattern)
+int bad() {
+    try {
+        return 1;
+    } finally {
+        return 2; // sobrescreve — não faça isso
+    }
+}
+
+18. Armadilhas comuns e como evitá-las
+
+Swallowing exceptions: catch (Exception e) {} sem log é péssimo.
+
+Catching Throwable: esconde Error (evitar).
+
+Return em finally: sobrescreve retornos e oculta exceções.
+
+Mutating returned objects in finally: produce surprising side effects.
+
+Usar exceptions como fluxo: performance e clareza prejudicadas.
+
+Ignorar InterruptedException: ao pegar, preservar o estado interrompido (Thread.currentThread().interrupt()).
+
+Exemplo correto para InterruptedException:
+
+try {
+    Thread.sleep(1000);
+} catch (InterruptedException e) {
+    Thread.currentThread().interrupt(); // preservar sinal de interrupção
+    throw new IllegalStateException("thread interrompida", e);
+}
+
+19. Advanced: bytecode/compilador — como finally é implementado
+
+O compilador transforma finally em estruturas que garantem execução em todos os caminhos (incluindo returns e exceções). Historicamente existiram instruções JSR/RET no bytecode; compilers modernos in-lineiam o bloco finally replicando-o nos pontos necessários ou usando estruturas de exceção no bytecode.
+
+Você pode ver o comportamento inspecionando o bytecode (javap -c Classe) para entender como o retorno é guardado e o finally invocado.
+
+20. Checklist prático para documento .txt (copy/paste)
+- Throwable: raiz; Error vs Exception
+- Checked vs Unchecked: diferenças e design
+- Exception chaining: new X(msg, cause) + getCause()
+- Suppressed exceptions: try-with-resources; addSuppressed/getSuppressed
+- try-with-resources > finally para AutoCloseable
+- multi-catch: catch (A|B e) { } ; e é efetivamente final
+- rethrow inference (Java 7+)
+- finally sempre executa; return é guardado; avoid return in finally
+- fillInStackTrace / setStackTrace: manipulação do stack trace
+- Performance: criar exceptions é caro; não usar em fluxo
+- Concurrency: ExecutionException / CompletionException / UncaughtExceptionHandler
+- InterruptedException: sempre preservar flag de interrupção
+- Logging: prefira SLF4J/Log4j e não printStackTrace em prod
+- Serialization: Throwable é serializable — cuidado com campos
+- Boas práticas: mensagens ricas, preserve causes, não swallow exceptions
+
+21. Referência rápida de APIs úteis
+
+Throwable#getCause()
+
+Throwable#initCause(Throwable)
+
+Throwable#addSuppressed(Throwable)
+
+Throwable#getSuppressed()
+
+Throwable#printStackTrace(PrintStream/PrintWriter)
+
+AutoCloseable / try-with-resources
+
+Objects.requireNonNull(obj, msg)
