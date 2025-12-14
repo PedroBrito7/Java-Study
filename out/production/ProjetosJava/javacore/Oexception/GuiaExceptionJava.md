@@ -98,7 +98,7 @@ Isso ocorre principalmente com o `try-with-resources`. Se houver uma falha no bl
 try (BufferedReader br = new BufferedReader(...)) {
     // ...
 } // O recurso 'br' é fechado automaticamente
-7. 📥 Multi-catch (Captura Múltipla)
+## 7. 📥 Multi-catch (Captura Múltipla)
 Permite capturar vários tipos de exceção em um único bloco catch, útil quando o tratamento é idêntico. (Java 7+).
 
 
@@ -114,7 +114,7 @@ ex é tratado como efetivamente final (não pode reatribuir ex).
 
 Você não pode listar tipos que estão na mesma hierarquia (Ex: Exception | IOException é inválido, pois IOException já é uma Exception).
 
-8. 🔄 Rethrow com Inferência de Tipo (Java 7+)
+## 8. 🔄 Rethrow com Inferência de Tipo (Java 7+)
 O compilador consegue ser mais esperto. Se você capturar e simplesmente relançar (throw e), ele pode inferir o tipo exato de exceção que será propagado.
 
 Java
@@ -126,7 +126,7 @@ public void precisaLancar() throws IOException { // Assinatura precisa
         throw e; // Compilador infere corretamente o tipo (apenas o necessário)
     }
 }
-9. 🚧 Regras de return + finally (Armadilhas)
+## 9. 🚧 Regras de return + finally (Armadilhas)
 O valor do return é guardado antes do finally começar.
 
 O bloco finally sempre roda.
@@ -139,19 +139,19 @@ int bad() {
     try { return 1; }
     finally { return 2; } // ⚠️ Retorna 2. EVITE ISSO!
 }
-10. 🛠️ fillInStackTrace() e Manipulação do Stack Trace
+## 10. 🛠️ fillInStackTrace() e Manipulação do Stack Trace
 fillInStackTrace(): Atualiza o stack trace para o ponto onde o método é chamado (reinicia o histórico). Cuidado: é caro.
 
 setStackTrace(StackTraceElement[]): Permite customizar ou limpar o stack trace (usado para otimizar performance ou não vazar detalhes).
 
 💡 Padrão: Não manipule o stack trace a menos que tenha razões fortes (performance ou segurança).
 
-11. 📈 Performance: Custo de Exceções
+## 11. 📈 Performance: Custo de Exceções
 Custo: Criar e preencher o stack trace tem um custo significativo.
 
 Melhor Prática: Evite usar exceções em caminhos críticos (loops). Em vez de deixar estourar, use checagens condicionais (if) para evitar exceções previsíveis.
 
-12. 🎨 Boas Práticas de Design de Exceptions
+## 12. 🎨 Boas Práticas de Design de Exceptions
 Crie exceções customizadas e específicas (Ex: UserNotFoundException extends RuntimeException).
 
 Use mensagens claras e ricas em contexto (IDs, parâmetros).
@@ -162,7 +162,7 @@ Sempre preserve a causa (new XException(msg, cause)) em I/O ou rede.
 
 Não use exceções para controle de fluxo.
 
-13. 🛡️ Padrões de Tratamento
+## 13. 🛡️ Padrões de Tratamento
 Fail-fast: Detecte e lance erros cedo (Objects.requireNonNull), simplificando o debugging.
 
 Exception Translation: Converter exceções de baixo nível (SQLException) para exceções de domínio mais amigáveis (DataAccessException).
@@ -171,24 +171,24 @@ Exception Wrapping: Encapsular exceções checked em runtime para não propagar 
 
 Normalize Errors: Em APIs, documente e normalize os tipos de erro retornados.
 
-14. 🤝 Concurrency e Exceptions
+## 14. 🤝 Concurrency e Exceptions
 Threads: Uma exceção não tratada mata a thread. Use Thread.setUncaughtExceptionHandler() para tratamento global.
 
 Futures: Future.get() e CompletableFuture.join() propagam exceções enroladas em ExecutionException ou CompletionException.
 
 SEMPRE use getCause() para desempacotar e encontrar a exceção original.
 
-15. 🪵 Logging e Diagnóstico
+## 15 🪵 Logging e Diagnóstico
 Não use e.printStackTrace() em produção. Use frameworks de logging estruturado (SLF4J, Log4j2).
 
 Logar a pilha inteira (stack trace) é crucial; inclua contexto (usuário, ID da requisição).
 
 Evite "swallowing" (engolir): jamais capture uma exceção sem fazer registro (log) dela.
 
-16. 📤 Exceções Serializáveis
+## 16. 📤 Exceções Serializáveis
 Throwable implementa Serializable. Se planejar enviar objetos de exceção pela rede, garanta que todos os campos da sua exceção customizada sejam serializáveis.
 
-17. 📝 Exemplos Avançados
+## 17. 📝 Exemplos Avançados
 Exemplo: Exception Chaining e Rethrow
 Java
 
@@ -208,7 +208,7 @@ try {
     Thread.currentThread().interrupt(); // MUITO IMPORTANTE: Preservar o sinal de interrupção
     throw new IllegalStateException("thread interrompida", e);
 }
-18. 🚨 Armadilhas Comuns
+## 18. 🚨 Armadilhas Comuns
 Swallowing: catch (Exception e) {} sem logar.
 
 Catching Throwable: Esconde Error da JVM (evitar).
@@ -219,10 +219,16 @@ Exceptions como fluxo: Prejudica performance e clareza.
 
 Ignorar InterruptedException: Falha em preservar o estado de interrupção da thread.
 
-19. 💻 Advanced: Bytecode e finally
+## 19. 💻 Advanced: Bytecode e finally
 O compilador traduz o finally garantindo sua execução, mesmo com return ou throw. Antigamente usava-se instruções JSR/RET no bytecode, mas hoje compilers modernos geralmente replicam o bloco finally ou usam estruturas de exceção no bytecode.
-
-20. ✅ Checklist Prático para Consulta Rápida
+## 20 💻  Exceção e regras de sobrescrita - 
+- Quando você estende uma classe, não precisamos declarar todas as exceções na classe filha;
+- Se for lançar exceções na classe filha, seguem as regras:
+    - Declarar 1 ou todas exceções da superclasse;
+    - Declarar uma exceção de outro tipo (no exemplo, LoginInvalidoException e FileNotFoundException são do tipo checked. Logo, podemos declarar outra e/ou substituir uma delas por uma do tipo unchecked);
+    - Declarar outra do tipo unchecked, desde que não seja mais genérica (Ex.: Exception é superclasse de LoginInvalidoException, não sendo possível lançá-las juntas).
+    - Para melhor visualizacao abrir o test>SobreEscrita> e as classes pessoas e funcionario e analisar o fluxo de classes filhas
+## 21. ✅ Checklist Prático para Consulta Rápida
 Throwable: raiz; Error vs Exception.
 
 Checked vs Unchecked: diferenças e design.
@@ -243,7 +249,7 @@ Logging: Usar frameworks, não printStackTrace().
 
 Boas Práticas: Mensagens ricas, preservar causas, não engolir.
 
-21. 📚 Referência Rápida de APIs Úteis
+## 21. 📚 Referência Rápida de APIs Úteis
 Throwable#getCause()
 
 Throwable#initCause(Throwable)
