@@ -1,0 +1,33 @@
+package javacore.Uregex.test;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class PatternMatchetTest04 {
+    public static void main(String[] args) {
+        // Regex: Serve para encontrar, validar e manipular padrões complexos dentro de textos (strings)
+        // \d = anything that is digits
+        // \D = all what no it's digits
+        // \s = Espaços em branco \t \n \f \r
+        // \S = all chars removing all spaces
+        // \w = all chars of a-z,A-Z digits
+        // range is used to get a specific char >
+        //  [abc] range > ou por a  ou por b  ou por c
+        // Quantificadores te dar poder em pegar determinada expressao dada ao string q ce ta dando
+        // ? zero ou uma  //  * zero ou mais  // + uma ou mais // { n,m} de n até m
+        // | o (v|o) o   ovo ou|   oco
+        // % fim da linha
+        String regex = "0[xX][\\d a-fA-F]+ \\s|s";
+        String texto2 = "12 0x 0X 0xFFABC 0x10G 0x1";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(texto2);
+        System.out.println("Texto : " + texto2);
+        System.out.println("Índice: 0123456789 ");
+        System.out.println("Regex: " + regex);
+        System.out.println("Posições encontradas: ");
+        while (matcher.find()){
+            System.out.print(matcher.start()+" " +matcher.group()+ "\n");
+        }
+
+    }
+}
