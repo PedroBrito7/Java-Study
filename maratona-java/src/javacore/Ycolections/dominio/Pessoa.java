@@ -4,9 +4,9 @@ import java.util.Objects;
 
 public class Pessoa {
     String nome;
-    String cpf;
+    int cpf;
 
-    public Pessoa(String nome, String cpf) {
+    public Pessoa(String nome, int cpf) {
         this.nome = nome;
         this.cpf = cpf;
     }
@@ -14,15 +14,15 @@ public class Pessoa {
     public String toString() {
         return "Pessoa{" +
                 "nome='" + nome + '\'' +
-                ", cpf='" + cpf + '\'' +
+                ", cpf=" + cpf +
                 '}';
     }
     @Override
     public boolean equals(Object o) {
-        if (this == o ) return true;
+        if ( this == o ) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Pessoa pessoa = (Pessoa) o;
-        return cpf.equals(pessoa.cpf);
+        return pessoa.equals(cpf);
     }
 
     @Override
