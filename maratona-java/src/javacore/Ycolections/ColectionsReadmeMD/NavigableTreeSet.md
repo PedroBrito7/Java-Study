@@ -1,6 +1,6 @@
 NavigableSet
 
-📌 Ideia principal:
+ Ideia principal:
 
 Mexe direto com um objeto.
 
@@ -22,5 +22,8 @@ ou que um Comparator seja fornecido no momento da criação do conjunto, sendo n
 compareble ou comparator para ordenar os elementos.
 - Permite a criação de subconjuntos (subsets) com base em intervalos de valores,
 - como headSet(), tailSet() e subSet(), com opções para incluir ou excluir os limites.
+
+- descendingSet(): Retorna uma visão do conjunto em ordem decrescente.
+- pollFirst() e pollLast(): Removem e retornam o primeiro e o último elemento do conjunto, respectivamente.
 
   
