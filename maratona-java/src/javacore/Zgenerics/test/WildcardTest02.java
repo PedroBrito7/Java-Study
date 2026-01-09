@@ -12,15 +12,15 @@ public class WildcardTest02{
 
     }
     private static void printConsulta(List<? extends Animal> animals){
-        Cachorro a = new Cachorro();
-        Cachorro a = new Gato();
-
         for (Animal animal : animals) {
             animal.consulta();
-        }
-        animals.add(new Cachorro()); // assim nao funciona pq pode ser uma lista de gatos ou de outro animal
-        //animals[1] = new Gato(); //  1 é cachorro o java sabe e vai retornar um exception, mas se fosse um animals ele deixaria
+        } // generics com extends nao permite adicionar elementos
 
     }
+    private static void printConsultaAnimal(List<? super Animal> animals){
+        animals.add(new Cachorro());
+        animals.add(new Gato());
+    } // generics com super permite adicionar elementos
+
 }
 
