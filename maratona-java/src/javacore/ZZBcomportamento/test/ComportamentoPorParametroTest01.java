@@ -1,6 +1,7 @@
-package javacore.ZZAclassesinternas.ZZBcomportamento.test;
+package javacore.ZZBcomportamento.test;
 
-import javacore.ZZAclassesinternas.ZZBcomportamento.dominio.Car;
+import javacore.ZZBcomportamento.Interfaces.CarPredicate;
+import javacore.ZZBcomportamento.dominio.Car;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,8 +10,8 @@ public class ComportamentoPorParametroTest01 {
     private static List<Car> cars =List.of(new Car("green",  2011), new Car("blue",  2008), new Car("white",  1995));
 
 public static void main(String[] args) {
-    System.out.println(filterCarByColor(cars,"green"));
-    System.out.println(filterCarByColor(cars,"blue"));
+    System.out.println(filter(cars,"green"));
+    System.out.println(filter(cars,"blue"));
     System.out.println(filterCarByYear(cars,2010));
 }
 private static List<Car> filterGreenCar(List<Car> cars) {
@@ -22,10 +23,10 @@ private static List<Car> filterGreenCar(List<Car> cars) {
     }
     return greensCars;
 }
-    private static List<Car> filterCarByColor(List<Car> cars,String cor ) {
+    private static List<Car> filter(List<Car> cars, CarPredicate carpredicate) {
         List<Car> filteredCars = new ArrayList<>();
         for (Car car : cars) {
-            if (car.getColor().equals(cor)) {
+            if (car.getColor().equals(carpredicate)) {
                 filteredCars.add(car);
             }
         }

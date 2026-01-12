@@ -1,4 +1,4 @@
-package javacore.ZZAclassesinternas.ZZBcomportamento.dominio;
+package javacore.ZZBcomportamento.dominio;
 
 public class Car {
     private String name = "Audi";
