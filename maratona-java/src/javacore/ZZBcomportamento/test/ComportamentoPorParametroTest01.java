@@ -10,8 +10,8 @@ public class ComportamentoPorParametroTest01 {
     private static List<Car> cars =List.of(new Car("green",  2011), new Car("blue",  2008), new Car("white",  1995));
 
 public static void main(String[] args) {
-    System.out.println(filter(cars,"green"));
-    System.out.println(filter(cars,"blue"));
+//    System.out.println(filter(cars,"green"));
+//    System.out.println(filter(cars,"blue"));
     System.out.println(filterCarByYear(cars,2010));
 }
 private static List<Car> filterGreenCar(List<Car> cars) {
