@@ -1,4 +1,4 @@
-package javacore.ZZClambdas;
+package javacore.ZZClambdas.test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +8,7 @@ public class LambdaTest02 {
     public static void main(String[] args) {
         List<String> strings = List.of("Natsu", "Alucard");
         List<Integer> integers = map(strings,(String s) -> s.length());
+        List<String> map = map(strings, String::toUpperCase);
         System.out.println(strings);
         System.out.println(integers);
 

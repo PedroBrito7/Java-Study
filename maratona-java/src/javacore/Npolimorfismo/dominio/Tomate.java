@@ -5,7 +5,7 @@ public class Tomate extends Produto{
     private String dataValidade;
 
     public Tomate(String nome, double valor) {
-        super(nome, valor);
+        super(nome, (int) valor);
     }
 
     @Override

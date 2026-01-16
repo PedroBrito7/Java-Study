@@ -1,4 +1,4 @@
-package javacore.ZZClambdas;
+package javacore.ZZClambdas.test;
 
 import javacore.ZZClambdas.dominio.Pessoa;
 

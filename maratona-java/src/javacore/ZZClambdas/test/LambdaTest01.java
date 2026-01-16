@@ -1,4 +1,4 @@
-package javacore.ZZClambdas;
+package javacore.ZZClambdas.test;
 
 import java.util.List;
 import java.util.function.Consumer;
