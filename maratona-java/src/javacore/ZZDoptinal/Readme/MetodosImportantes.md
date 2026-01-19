@@ -1,4 +1,10 @@
-7️⃣ Métodos principais do Optional (o essencial)
+# Pra que serve
+Se usa o Optional para evitar nulls e tornar o código mais seguro e expressivo.
+Quando voce sabe que um valor pode estar ausente, o Optional é uma ótima escolha.
+ex: passar String nome, ele pode ser null, então voce usa Optional<String> nomeOpt.(leia se os exercicios anteriores nao estiverem claros)
+
+
+# Métodos principais do Optional (o essencial)
 
 🔹 of(valor)
 

@@ -1,4 +1,4 @@
-package ZZDoptinal.Exercicios;
+package javacore.ZZDoptinal.Exercicios;
 
 import java.util.Optional;
 

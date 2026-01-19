@@ -1,4 +1,4 @@
-package ZZDoptinal.test;
+package javacore.ZZDoptinal.test;
 
 import java.util.Optional;
 
