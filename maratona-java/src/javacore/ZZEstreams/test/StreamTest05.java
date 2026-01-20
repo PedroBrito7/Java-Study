@@ -14,6 +14,6 @@ public class StreamTest05 {
         System.out.println(Arrays.toString(letters));
         List<String[]> collect = words.stream().map(w -> w.split("")).collect(Collectors.toList());
         Stream<String> stream = Arrays.stream(letters);
-        words.stream().map(w -> w.split("")).
+        words.stream().map(w -> w.split(""));
     }
 }
