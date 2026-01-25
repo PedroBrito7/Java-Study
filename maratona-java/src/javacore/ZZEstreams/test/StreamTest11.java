@@ -23,6 +23,7 @@ public class StreamTest11 {
 
         lightNovels.stream().max(Comparator.comparing(LightNovel::getPrice)).ifPresent(System.out::println);
         lightNovels.stream().collect(Collectors.maxBy(Comparator.comparing(LightNovel::getPrice))).ifPresent(System.out::println);
+        lightNovels.stream().map(Comparator.comparing(LightNovel::getTitle)).ifPresent(souut);
 
         }
 }
