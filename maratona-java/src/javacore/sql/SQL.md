@@ -78,3 +78,54 @@ FROM produtos
 GROUP BY categoria 
 HAVING COUNT(*) > 5;
 ```
+
+## JOIN
+Usado para combinar dados de duas ou mais tabelas relacionadas por uma chave.
+
+### INNER JOIN
+Retorna apenas os registros que possuem correspondência em ambas as tabelas.
+```sql
+SELECT clientes.nome, pedidos.valor_total
+FROM clientes
+INNER JOIN pedidos ON clientes.id = pedidos.cliente_id;
+```
+
+### LEFT JOIN (LEFT OUTER JOIN)
+Retorna todos os registros da tabela da esquerda e os correspondentes da direita.
+```sql
+SELECT clientes.nome, pedidos.valor_total
+FROM clientes
+LEFT JOIN pedidos ON clientes.id = pedidos.cliente_id;
+```
+
+### RIGHT JOIN (RIGHT OUTER JOIN)
+Retorna todos os registros da tabela da direita e os correspondentes da esquerda.
+```sql
+SELECT clientes.nome, pedidos.valor_total
+FROM clientes
+RIGHT JOIN pedidos ON clientes.id = pedidos.cliente_id;
+```
+
+### FULL JOIN (FULL OUTER JOIN)
+Retorna todos os registros quando houver correspondência em qualquer uma das tabelas.
+```sql
+SELECT clientes.nome, pedidos.valor_total
+FROM clientes
+FULL JOIN pedidos ON clientes.id = pedidos.cliente_id;
+```
+
+### CROSS JOIN
+Retorna o produto cartesiano entre as tabelas.
+```sql
+SELECT clientes.nome, produtos.nome
+FROM clientes
+CROSS JOIN produtos;
+```
+
+### SELF JOIN
+Usado quando a tabela se relaciona com ela mesma.
+```sql
+SELECT a.nome AS funcionario, b.nome AS gerente
+FROM funcionarios a
+LEFT JOIN funcionarios b ON a.gerente_id = b.id;
+```
