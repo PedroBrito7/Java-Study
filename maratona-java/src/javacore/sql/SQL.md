@@ -92,6 +92,7 @@ INNER JOIN pedidos ON clientes.id = pedidos.cliente_id;
 
 ### LEFT JOIN (LEFT OUTER JOIN)
 Retorna todos os registros da tabela da esquerda e os correspondentes da direita.
+Se nao houver registros correspondentes ele retorna null
 ```sql
 SELECT clientes.nome, pedidos.valor_total
 FROM clientes
@@ -108,6 +109,7 @@ RIGHT JOIN pedidos ON clientes.id = pedidos.cliente_id;
 
 ### FULL JOIN (FULL OUTER JOIN)
 Retorna todos os registros quando houver correspondência em qualquer uma das tabelas.
+Imagem dois circulos que se ligam e estao todos prenchidos. e se estiver vazio prenche com null
 ```sql
 SELECT clientes.nome, pedidos.valor_total
 FROM clientes
@@ -116,6 +118,7 @@ FULL JOIN pedidos ON clientes.id = pedidos.cliente_id;
 
 ### CROSS JOIN
 Retorna o produto cartesiano entre as tabelas.
+
 ```sql
 SELECT clientes.nome, produtos.nome
 FROM clientes
@@ -128,4 +131,8 @@ Usado quando a tabela se relaciona com ela mesma.
 SELECT a.nome AS funcionario, b.nome AS gerente
 FROM funcionarios a
 LEFT JOIN funcionarios b ON a.gerente_id = b.id;
+```
+### OUTER JOIN 
+```sql
+
 ```
