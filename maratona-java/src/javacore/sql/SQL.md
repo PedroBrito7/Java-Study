@@ -127,6 +127,12 @@ CROSS JOIN produtos;
 
 ### SELF JOIN
 Usado quando a tabela se relaciona com ela mesma.
+Só usa self quando estar usando AS 
+```
+SELECT NOME_COLUNA 
+FROM TABELA A, TABELA B
+WHERE CONDICAO 
+```
 ```sql
 SELECT a.nome AS funcionario, b.nome AS gerente
 FROM funcionarios a
@@ -136,3 +142,20 @@ LEFT JOIN funcionarios b ON a.gerente_id = b.id;
 ```sql
 
 ```
+
+## UNION
+Usado para combinar dois ou mais resultados de um select em um resultado maior apenas.
+
+estrutura:
+```sql
+SELECT coluna1, coluna2
+FROM tabela1
+UNION 
+SELECT coluna1, coluna 2 
+FROM tabela2
+```
+Precisa selecionar as mesmas quantidades de colunas, e o mesmo tipo de dado (string,int..)
+exemplo coluna1 de cima e coluna 2 sao os mesmo da de baixo : string por exemplo. o union ele exclui as duplicatas, e junta tudo
+excecao do union all (Mantém as duplicatas dos dados) usa-se em tabelas nao normalizadas (Incosistencia)
+
+## UNION
