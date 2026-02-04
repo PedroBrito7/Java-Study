@@ -6,8 +6,8 @@ public class ThreadAccountTest01 implements Runnable  {
     private Account account = new Account();
     public static void main(String[] args) {
 ThreadAccountTest01 threadAccountTest01 = new ThreadAccountTest01();
-Thread t1 = new Thread(threadAccountTest01, " Hestia ");
-Thread t2 = new Thread(threadAccountTest01, " Bell Cranel ");
+Thread t1 = new Thread(threadAccountTest01, "Hestia ");
+Thread t2 = new Thread(threadAccountTest01, "Bell Cranel ");
 t1.start();
 t2.start();
     }
@@ -23,7 +23,6 @@ t2.start();
 
     private void withdrawal(int amount) { // agora com synchronized apenas 1 thread de cada vez para executar
         synchronized (account) {
-
             System.out.println(getThreadName()+ "Dentro do synchronized");
             System.out.println();
             if (account.getBalance() >= amount) {
