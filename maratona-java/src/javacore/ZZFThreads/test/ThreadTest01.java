@@ -24,7 +24,7 @@ class ThreadExample extends Thread{
         }
     }
 }
-public class ZZFThreads {
+public class ThreadTest01 {
     public static void main(String[] args) {
         Thread t1 = new Thread(new ThreadExample('A'), "T1A");
         Thread t2 = new Thread(new ThreadExample('b'), "T2b");

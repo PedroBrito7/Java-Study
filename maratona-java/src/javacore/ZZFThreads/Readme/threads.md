@@ -1,4 +1,4 @@
-# O que é uma Thread
+[# O que é uma Thread
 
 Thread = fluxo de execução dentro do programa.
 
@@ -31,3 +31,14 @@ t4.setPriority(Thread.MIN_PRIORITY);
 ````
 Thread.sleep(2000)
 ````
+
+## Yield 
+Serve para a THREAD monstrar/Indicação para java que é uma pausa(voltando pro runnable)
+
+## Join
+Thread main é a que executa tudo, a t1 e t2 executam um método o (run),
+Rodando as duas ao "mesmo tempo" o main liga os dois | e o t1 e t2 são ligados ao método run
+Mas ai digamos que vc precisa que antes de chamar o thread t2 vc precisa terminar thread t1 e para fazer isso 
+usa-se o JOIN (ou seja uma especie de escolher qual vai ser o primeiro a ser finalizado.)
+
+## Sicronismo de Threads
