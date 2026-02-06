@@ -25,6 +25,6 @@ class Printer implements Runnable{
 public class ExecutorsTest01 {
 
     public static void main(String[] args) {
-        Executors.newFixedThreadPool()  // poll de  threads fixos
+        Executors.newFixedThreadPool(2);  // poll de  threads fixos
     }
 }
