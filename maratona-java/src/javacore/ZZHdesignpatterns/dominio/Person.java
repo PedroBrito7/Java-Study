@@ -49,5 +49,9 @@ public class Person {
                     ", email='" + email + '\'' +
                     '}';
         }
+
+        public String getFirstName() {
+            return firstName;
+        }
     }
 }
