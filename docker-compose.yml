@@ -1,0 +1,13 @@
+version: '3.8' # Versão recomendada mais atual
+services:
+  dbdevdojo:
+    image: mysql
+    container_name: mysqldojojava
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3319:3306" # Mapeia 3319 (sua máquina) para 3306 (container)
+    volumes:
+      - devdojo_maratona_data:/var/lib/mysql
+volumes:
+  devdojo_maratona_data:
