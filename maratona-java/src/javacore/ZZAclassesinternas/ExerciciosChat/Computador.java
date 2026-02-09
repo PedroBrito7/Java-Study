@@ -2,6 +2,7 @@ package javacore.ZZAclassesinternas.ExerciciosChat;
 
 public class Computador {
     private String marca;
+
     public Computador(String marca) {
         this.marca = marca;
     }
@@ -16,6 +17,7 @@ public class Computador {
         }
 
     }
+
     public static void main(String[] args) {
         Computador computador = new Computador("Dell");
         Computador.Processador processador = computador.new Processador();

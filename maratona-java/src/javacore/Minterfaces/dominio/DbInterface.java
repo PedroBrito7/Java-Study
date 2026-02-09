@@ -3,10 +3,11 @@ import java.util.Optional;
 
 /**
  * Interface genérica para operações de persistência de dados (CRUD).
- * @param <T> O tipo da entidade (ex: Usuario, Produto)
+ *
+ * @param <T>  O tipo da entidade (ex: Usuario, Produto)
  * @param <ID> O tipo do identificador (ex: Long, String)
  */
-public interface DbInterface <T, ID> {
+public interface DbInterface<T, ID> {
 
     // Cria ou atualiza um registro
     T save(T entity);

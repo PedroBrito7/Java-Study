@@ -11,9 +11,9 @@ public class WrapperTest01 {
         char charP = 'W';
         boolean booleanP = false;
 // Wrapper autoboxing jeito que o java ja transforma
-        Byte byteW= 127;
-        Short shortW= 1;
-        Integer intW= 1;
+        Byte byteW = 127;
+        Short shortW = 1;
+        Integer intW = 1;
         Long longW = 10L;
         Float floatW = 10F;
         Double doubleW = 10D;

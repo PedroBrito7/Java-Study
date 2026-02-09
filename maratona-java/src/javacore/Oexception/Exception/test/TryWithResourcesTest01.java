@@ -8,31 +8,31 @@ import java.io.*;
 public class TryWithResourcesTest01 {
     public static void main(String[] args) {
 
-lerArquivo();
+        lerArquivo();
 
     }
 
 
-    public static void lerArquivo(){
-      //  try( Reader reader = new BufferedReader(new FileReader("test.txt")) ) da pra usar assim
+    public static void lerArquivo() {
+        //  try( Reader reader = new BufferedReader(new FileReader("test.txt")) ) da pra usar assim
         // porem fica melhor usando desse jeito chamando a classe Closeable
         try (Leitor1 leitor1 = new Leitor1();
-             Leitor2 leitor2 = new Leitor2();){
-        }catch (IOException e){
+             Leitor2 leitor2 = new Leitor2();) {
+        } catch (IOException e) {
         }
 
     }
 
 
-    public static void lerArquivo2(){
+    public static void lerArquivo2() {
         Reader reader = null; // declara fora pra poder mexer com ela dentro
         try {
             reader = new BufferedReader(new FileReader("test.txt"));
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
-        }finally {
+        } finally {
             try {
-                if (reader != null){
+                if (reader != null) {
                     reader.close();
                 }
             } catch (IOException exception) {

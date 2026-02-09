@@ -15,7 +15,8 @@ public final class Aircraft {
         availableSeats.add("1A");
         availableSeats.add("1B");
     } // criando uma "aeronave" que tem esses assentos
-    public boolean bookSeat(String seat){
+
+    public boolean bookSeat(String seat) {
         return availableSeats.remove(seat);
     }
 }

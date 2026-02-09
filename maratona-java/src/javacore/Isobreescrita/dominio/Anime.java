@@ -4,9 +4,10 @@ public class Anime extends Object {
     private String nome;
 
     @Override
-    public String toString(){
+    public String toString() {
         return "Anime : " + this.nome;
     }
+
     public Anime(String nome) {
         this.nome = nome;
     }

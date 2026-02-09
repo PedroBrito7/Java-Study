@@ -15,7 +15,6 @@ public class PatternMatchetTest03 {
         //  [abc] range > ou por a  ou por b  ou por c
 
 
-
         String regex = "0[xX][\\d a-f]";
         // String texto = "abaaba";
         String texto2 = "12 0x 0X 0xFFABC 0x109 0x1";
@@ -25,8 +24,8 @@ public class PatternMatchetTest03 {
         System.out.println("Índice: 0123456789 ");
         System.out.println("Regex: " + regex);
         System.out.println("Posições encontradas: ");
-        while (matcher.find()){
-            System.out.print(matcher.start()+" " +matcher.group()+ "\n");
+        while (matcher.find()) {
+            System.out.print(matcher.start() + " " + matcher.group() + "\n");
         }
 
     }

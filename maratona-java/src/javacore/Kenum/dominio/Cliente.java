@@ -1,6 +1,6 @@
 package javacore.Kenum.dominio;
 
-public class Cliente  {
+public class Cliente {
     private String nome;
     private TipoCliente tipoCliente;
     private TipoPagamento tipoPagamento;

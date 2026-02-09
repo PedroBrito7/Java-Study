@@ -7,17 +7,18 @@ public class Members {
     private final Queue<String> emails = new ArrayBlockingQueue<>(10);
     private boolean open = true;
 
-    public boolean isOpen(){
+    public boolean isOpen() {
         return open;
     }
-    public int pendingEmails(){
-        synchronized (emails){
+
+    public int pendingEmails() {
+        synchronized (emails) {
             return emails.size();
         }
     }
 
-    public void addMemberEmail(String email){
-        synchronized (this.emails){
+    public void addMemberEmail(String email) {
+        synchronized (this.emails) {
             String threadName = Thread.currentThread().getName();
             System.out.println(threadName + "Add email na lista");
             this.emails.add(email);
@@ -25,21 +26,23 @@ public class Members {
             // todo voltar quando a thread estiver esperando
         }
     }
-    public String  retrieveEmail() throws InterruptedException {
+
+    public String retrieveEmail() throws InterruptedException {
         System.out.println(Thread.currentThread().getName() + "Chekling if there are emails");
-        synchronized (this.emails){
-            while(this.emails.size() == 0){
-                if(!open) return null;
+        synchronized (this.emails) {
+            while (this.emails.size() == 0) {
+                if (!open) return null;
                 System.out.println(Thread.currentThread().getName() + " not there are emails in list, enter in mode wait");
                 this.emails.wait();
             }
             return this.emails.poll();
         }
     }
-    public void close(){
+
+    public void close() {
         open = false;
-        synchronized (this.emails){
-            System.out.println(Thread.currentThread().getName()+ "notifying everyone that we are no longer reading emails");
+        synchronized (this.emails) {
+            System.out.println(Thread.currentThread().getName() + "notifying everyone that we are no longer reading emails");
         }
 
     }

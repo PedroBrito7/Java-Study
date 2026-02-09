@@ -6,7 +6,8 @@ import java.util.stream.Collectors;
 
 public class PlanosDeFundoVariasTarefa {
     public static void main(String[] args) {
-        record Tarefa(String nome, List<String> tags) {}
+        record Tarefa(String nome, List<String> tags) {
+        }
 
         List<Tarefa> tarefas = List.of(
                 new Tarefa("Estudar", List.of("Importante", "Urgente")),

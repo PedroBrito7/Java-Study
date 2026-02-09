@@ -10,11 +10,12 @@ public class MetodoGenericoTest01 {
         System.out.println(barcoList);
     }
 
-    private static <T> void criarArrayComUmObjetor(T t){ // metodo generico sem retorno
+    private static <T> void criarArrayComUmObjetor(T t) { // metodo generico sem retorno
         List<T> list = List.of(t);
         System.out.println(list);
     }
-    private static <T> List<T> criarArrayComUmObjeto(T t){ // metodo generico com retorno
+
+    private static <T> List<T> criarArrayComUmObjeto(T t) { // metodo generico com retorno
         return List.of(t);
     }
 }

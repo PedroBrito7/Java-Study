@@ -9,8 +9,8 @@ import java.util.List;
 
 public class ClasseGenericaTest03 {
     public static void main(String[] args) {
-       List<Carro> carrosDisponiveis = List.of(new Carro("BMW"), new Carro("Fusca"));
-       List<Barco> barcosDisponiveis = List.of(new Barco("Lancha"), new Barco("Iate"));
+        List<Carro> carrosDisponiveis = List.of(new Carro("BMW"), new Carro("Fusca"));
+        List<Barco> barcosDisponiveis = List.of(new Barco("Lancha"), new Barco("Iate"));
         RentalService<Carro> rentalService = new RentalService<>(carrosDisponiveis);
         Carro carro = rentalService.buscarObjetoDisponivel();
         System.out.println("Usando o carro por um periodo...");

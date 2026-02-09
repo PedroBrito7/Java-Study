@@ -10,23 +10,23 @@ import java.util.stream.Stream;
 // Gerando Stream
 public class StreamTest09 {
     public static void main(String[] args) {
-        IntStream.rangeClosed(1,50).filter(n -> n % 2 ==0).forEach(n-> System.out.print(n + " "));
+        IntStream.rangeClosed(1, 50).filter(n -> n % 2 == 0).forEach(n -> System.out.print(n + " "));
         System.out.println();
-        IntStream.range(1,50).filter(n -> n % 2 ==0).forEach(n-> System.out.print(n + " "));
+        IntStream.range(1, 50).filter(n -> n % 2 == 0).forEach(n -> System.out.print(n + " "));
         System.out.println();
 
-        Stream.of( "eleve", "ana", "cosmolos")
+        Stream.of("eleve", "ana", "cosmolos")
                 .map(String::toUpperCase)
-                .forEach(s-> System.out.print(s + " "));
-        int num[] = {1,2,3,4,5};
+                .forEach(s -> System.out.print(s + " "));
+        int num[] = {1, 2, 3, 4, 5};
         Arrays.stream(num)
                 .average()
                 .ifPresent(System.out::println);
 
         System.out.println("Quero separar arquivos que tenha java no corpo dele");
-        try (Stream <String> lines = Files.lines(Paths.get("file.txt"))) {
-            lines.filter(l-> l.contains("Java")).forEach(System.out::println);
-        }catch(IOException e){
+        try (Stream<String> lines = Files.lines(Paths.get("file.txt"))) {
+            lines.filter(l -> l.contains("Java")).forEach(System.out::println);
+        } catch (IOException e) {
             e.printStackTrace();
         }
 

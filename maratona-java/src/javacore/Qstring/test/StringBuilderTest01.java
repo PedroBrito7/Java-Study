@@ -8,7 +8,7 @@ public class StringBuilderTest01 {
         StringBuilder sb = new StringBuilder("OutroNome"); // ele nao é uma string ele converte pra string, sem precisa jogar no stringpool
         System.out.println(sb.toString());
         sb.append(" Olá ").append(" Mundo");
-        sb.substring(0,2);
+        sb.substring(0, 2);
         System.out.println(sb);
     }
 }

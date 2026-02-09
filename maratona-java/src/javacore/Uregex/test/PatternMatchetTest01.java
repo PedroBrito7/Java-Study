@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class PatternMatchetTest01 {
     public static void main(String[] args) {
-       // Regex: Serve para encontrar, validar e manipular padrões complexos dentro de textos (strings)
+        // Regex: Serve para encontrar, validar e manipular padrões complexos dentro de textos (strings)
         String regex = "aba";
         // String texto = "abaaba";
         String texto2 = "abababa";
@@ -15,8 +15,8 @@ public class PatternMatchetTest01 {
         System.out.println("Índice: 0123456789 ");
         System.out.println("Regex: " + regex);
         System.out.println("Posições encontradas: ");
-        while (matcher.find()){
-            System.out.print(matcher.start()+" ");
+        while (matcher.find()) {
+            System.out.print(matcher.start() + " ");
         }
     }
 }

@@ -2,9 +2,9 @@ package javacore.Gassociacao.dominio;
 
 public class Escola {
     private String nome;
-    private Professor [] professores;
+    private Professor[] professores;
 
-    public Escola(String nome){
+    public Escola(String nome) {
         this.nome = nome;
     }
 
@@ -13,12 +13,12 @@ public class Escola {
         this.professores = professores;
     }
 
-    public void imprime(){
+    public void imprime() {
         System.out.println(this.nome);
-        if(professores == null) return;
+        if (professores == null) return;
         for (Professor professor : professores) {
             System.out.println(professor.getNome());
-            
+
         }
 
     }
@@ -38,7 +38,6 @@ public class Escola {
     public void setProfessores(Professor[] professores) {
         this.professores = professores;
     }
-
 
 
 }

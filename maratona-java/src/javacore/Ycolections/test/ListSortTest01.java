@@ -23,7 +23,7 @@ public class ListSortTest01 {
 
         Collections.sort(dinheiros);
 
-        for(String manga: mangas){
+        for (String manga : mangas) {
             System.out.println(manga);
         }
 

@@ -8,7 +8,7 @@ import java.util.List;
 
 public class AnonymousClassesTest02 {
     public static void main(String[] args) {
-        List<Barco> barcoList = List.of(new Barco("Lancha"), new Barco ("Canoa"));
+        List<Barco> barcoList = List.of(new Barco("Lancha"), new Barco("Canoa"));
 //        new Comparator<Barco>() {
 //            @Override
 //            public int compare(Barco barco, Barco t1) {

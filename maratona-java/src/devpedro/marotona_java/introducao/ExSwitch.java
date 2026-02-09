@@ -5,7 +5,7 @@ public class ExSwitch {
         // Utilizando switch e Dados os valores de 1 a 7 , imprima se é dia útil ou final de semana
         // Considerando 1 como domingo
         byte dia = 1;
-        switch (dia){
+        switch (dia) {
             case 1:
             case 7:
                 System.out.println("FDS");

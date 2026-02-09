@@ -6,7 +6,7 @@ import javacore.Npolimorfismo.dominio.Tomate;
 
 public class CalculadoraImposto {
 
-    public static void calcularImposto(Produto produto){
+    public static void calcularImposto(Produto produto) {
         System.out.println(" Relatório de imposto");
         double imposto = produto.calcularImposto();
         System.out.println("Produto: " + produto.getNome());

@@ -12,10 +12,10 @@ public class RuntimeExceptionTest03 {
             return "conexão aberta";
         } catch (Exception e) {
             e.printStackTrace(); // relatorio total do error
-        }finally {
+        } finally {
             // sempre vai ser executado indepedente se tem exceçao ou nao
             System.out.println("Fechando recurso liberado pelo SO...");
         }
-        return null ;
+        return null;
     }
 }

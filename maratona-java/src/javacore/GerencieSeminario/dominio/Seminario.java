@@ -25,7 +25,6 @@ public class Seminario {
     }
 
 
-
     public Aluno[] getAlunos() {
         return alunos;
     }

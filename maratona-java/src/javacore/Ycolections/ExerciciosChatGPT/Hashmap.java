@@ -19,8 +19,8 @@ public class Hashmap {
         pessoas.add(new Pessoa("Ana", 111));
         pessoas.add(new Pessoa("Ana ju", 444));
 
-        for(Pessoa pessoa : pessoas){
-            mapa.put(pessoa,  mapa.getOrDefault(pessoa, 0) + 1);
+        for (Pessoa pessoa : pessoas) {
+            mapa.put(pessoa, mapa.getOrDefault(pessoa, 0) + 1);
 
         }
         System.out.println(mapa);

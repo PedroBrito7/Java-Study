@@ -15,7 +15,7 @@ public class DateFormatTest01 {
         df[5] = DateFormat.getDateInstance(DateFormat.LONG);
         df[6] = DateFormat.getDateInstance(DateFormat.FULL);
 
-        for (DateFormat dateFormat: df){
+        for (DateFormat dateFormat : df) {
             System.out.println(dateFormat.format(calendar.getTime()));
         }
     }

@@ -5,7 +5,7 @@ import javacore.Hherenca.dominio.Pessoa;
 
 public class HeranceTest02 {
     public static void main(String[] args) {
-        Funcionario funcionario = new Funcionario( "jiraya");
+        Funcionario funcionario = new Funcionario("jiraya");
 
     }
 }

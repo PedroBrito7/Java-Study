@@ -8,7 +8,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class LambdasMethodReference {
-static class Produto {
+    static class Produto {
         protected String nome;
         protected double valor;
 
@@ -16,10 +16,12 @@ static class Produto {
             this.nome = nome;
             this.valor = valor;
         }
-    @Override
-    public String toString() {
-        return nome + " - R$ " + valor;
-    }
+
+        @Override
+        public String toString() {
+            return nome + " - R$ " + valor;
+        }
+
         public String getNome() {
             return nome;
         }
@@ -28,13 +30,14 @@ static class Produto {
             return valor;
         }
     }
+
     public static void main(String[] args) {
         List<String> names = List.of("Pedro", "ana", "Henri");
         names.forEach(name -> System.out.println(name.toUpperCase()));
 
         // Lambda com Predicate
-        List<Integer> numPar = List.of(1,2,3,4,5,6,7,8,9,10);
-        Predicate<Integer> isEven = n -> n % 2==0;
+        List<Integer> numPar = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        Predicate<Integer> isEven = n -> n % 2 == 0;
         numPar.stream()
                 .filter(isEven)
                 .forEach(System.out::println);
@@ -49,7 +52,7 @@ static class Produto {
 
         System.out.println(resultado);
         //Exercício 4 -  Metodo reduce
-        List<Double> precos = List.of(20.0,32.23,20.3,55.5,6.7,899.5);
+        List<Double> precos = List.of(20.0, 32.23, 20.3, 55.5, 6.7, 899.5);
         double soma = precos.stream().reduce(0.0, (subtotal, element) -> subtotal + element);
         System.out.println(soma);
 
@@ -62,17 +65,16 @@ static class Produto {
                 new Produto("Webcam", 250.0)
         ));
 
-       produtos.sort((p1, p2) -> Double.compare(p1.getValor(), p2.getValor()));
+        produtos.sort((p1, p2) -> Double.compare(p1.getValor(), p2.getValor()));
         System.out.println(produtos);
 
-    // Exercício 6 — Contagem com condição (count)
+        // Exercício 6 — Contagem com condição (count)
         List<String> list3 = List.of("Ana", "Ametista", "pedro", "Dono ricado", "Ace");
         long count = list3.stream()
-                .filter(s-> s.toUpperCase().startsWith("A"))
+                .filter(s -> s.toUpperCase().startsWith("A"))
                 .count();
         System.out.println(count);
     }
-
 
 
 }

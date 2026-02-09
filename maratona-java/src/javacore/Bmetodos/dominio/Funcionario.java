@@ -3,32 +3,33 @@ package javacore.Bmetodos.dominio;
 public class Funcionario {
     private String name;
     private int age;
-    private double [] wages;
-    private double media =0;
+    private double[] wages;
+    private double media = 0;
 
-    public void printDatas(){
+    public void printDatas() {
         System.out.println("##############");
         System.out.println(this.name);
         System.out.println(this.age);
-        if(wages ==null) {
+        if (wages == null) {
             return;
         }
-            for (double wage : wages) {
-                System.out.println(wage + " ");
-            }
-      mediaWage();
+        for (double wage : wages) {
+            System.out.println(wage + " ");
+        }
+        mediaWage();
 
     }
-    public void mediaWage(){
-        if (wages ==null){
+
+    public void mediaWage() {
+        if (wages == null) {
             return;
         }
-            for (double wage : wages) {
-                media += wage;
-            }
-            media /= wages.length;
+        for (double wage : wages) {
+            media += wage;
+        }
+        media /= wages.length;
 
-        System.out.println("\nMedia salarial:" +media);
+        System.out.println("\nMedia salarial:" + media);
     }
 
     public void setName(String name) {
@@ -42,6 +43,7 @@ public class Funcionario {
     public void setWages(double[] wages) {
         this.wages = wages;
     }
+
     public String getName() {
         return name;
     }

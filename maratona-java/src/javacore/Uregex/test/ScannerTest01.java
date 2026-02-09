@@ -5,7 +5,7 @@ public class ScannerTest01 {
         String texto = "Levi, Eren, Mikasa, true, 200";
         String[] nomes = texto.split(",");
 
-        for(String nome:nomes){
+        for (String nome : nomes) {
             System.out.println(nome.trim());
         }
 

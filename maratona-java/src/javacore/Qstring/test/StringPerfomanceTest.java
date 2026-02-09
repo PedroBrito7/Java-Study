@@ -14,10 +14,11 @@ public class StringPerfomanceTest {
             texto += 1;
         }
     }
-        private static void concatStrinBuilder(int tamanho){
-            StringBuilder sb = new StringBuilder(tamanho);
-            for (int i = 0; i < tamanho; i++) {
-                sb.append(i);
-            }
+
+    private static void concatStrinBuilder(int tamanho) {
+        StringBuilder sb = new StringBuilder(tamanho);
+        for (int i = 0; i < tamanho; i++) {
+            sb.append(i);
         }
     }
+}

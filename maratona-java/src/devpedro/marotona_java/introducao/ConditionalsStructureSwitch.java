@@ -2,9 +2,9 @@ package devpedro.marotona_java.introducao;
 
 public class ConditionalsStructureSwitch {
     public static void main(String[] args) {
-    byte dia = 6 ;
-    // char, int , byte, short, enum, String
-        switch (dia){
+        byte dia = 6;
+        // char, int , byte, short, enum, String
+        switch (dia) {
             case 1:
                 System.out.println("Sunday");
                 break;
@@ -29,8 +29,8 @@ public class ConditionalsStructureSwitch {
             default:
                 System.out.println("Opção inválida");
         }
-        char sexo =  'M';
-        switch (sexo){
+        char sexo = 'M';
+        switch (sexo) {
             case 'M':
                 System.out.println("Homem");
                 break;

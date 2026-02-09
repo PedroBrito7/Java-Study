@@ -1,7 +1,7 @@
 package javacore.Npolimorfismo.dominio;
 
-public class Tomate extends Produto{
-    public static final double IMPOSTO_POR_CENTO =0.06;
+public class Tomate extends Produto {
+    public static final double IMPOSTO_POR_CENTO = 0.06;
     private String dataValidade;
 
     public Tomate(String nome, double valor) {
@@ -11,8 +11,9 @@ public class Tomate extends Produto{
     @Override
     public double calcularImposto() {
         System.out.println("calculando imposto do Tomate");
-        return this.valor * IMPOSTO_POR_CENTO ;
+        return this.valor * IMPOSTO_POR_CENTO;
     }
+
     public String getDataValidade() {
         return dataValidade;
     }

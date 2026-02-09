@@ -9,7 +9,7 @@ public class ExarrayMultidimensional {
     Use dois foreach para contar quantos números são maiores que 10.
      */
     public static void main(String[] args) {
-        int[][] arrBase= new int[3][2];
+        int[][] arrBase = new int[3][2];
         arrBase[0][0] = 5;
         arrBase[0][1] = 12;
 

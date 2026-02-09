@@ -17,7 +17,7 @@ public class Manga implements Comparable<Manga> {
     }
 
     public Manga(Long id, String nome, double preco, int quantidade) {
-        this(id,nome,preco);
+        this(id, nome, preco);
         this.quantidade = quantidade;
     }
 
@@ -43,8 +43,6 @@ public class Manga implements Comparable<Manga> {
                 ", quantidade=" + quantidade +
                 '}';
     }
-
-
 
 
     public Long getId() {
@@ -84,11 +82,10 @@ public class Manga implements Comparable<Manga> {
         // negativo se o this for menor que < outroManga
         // se this == outroManga,return 0
         // positivo so se o this for maior que outroManga
-       // return this.id.compareTo(outroManga.getId()); // Long ja possui um metodo compareTo próprio
+        // return this.id.compareTo(outroManga.getId()); // Long ja possui um metodo compareTo próprio
         // ele ja é um wrapper, so nao pode fazer isso com tipos primitivos
         // return Double.compare(preco,outroManga.getPreco());
         return this.nome.compareTo(outroManga.getNome());
-
 
 
     }

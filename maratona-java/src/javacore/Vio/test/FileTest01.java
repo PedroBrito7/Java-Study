@@ -11,8 +11,8 @@ public class FileTest01 {
         File file = new File("file.txt");
         try {
 
-            boolean isCreated= file.createNewFile();
-            System.out.println("Created "+isCreated);
+            boolean isCreated = file.createNewFile();
+            System.out.println("Created " + isCreated);
             System.out.println("path" + file.getPath());
             System.out.println("path absolute" + file.getAbsolutePath());
             System.out.println("Is directory" + file.isDirectory());
@@ -20,8 +20,8 @@ public class FileTest01 {
             System.out.println("Is hidden" + file.isHidden());
             System.out.println("Last modified" + Instant.ofEpochMilli(file.lastModified()).atZone(ZoneId.systemDefault()));
             Boolean exists = file.exists();
-            if(exists){
-                System.out.println("Deleted "+file.delete());
+            if (exists) {
+                System.out.println("Deleted " + file.delete());
             }
 
         } catch (Exception e) {

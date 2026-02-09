@@ -12,7 +12,7 @@
 //        System.out.println(mangaByTitle);
 //
 //        Manga mangaById = MangaRepository.findById(2);
-////                .orElseThrow(IllegalAccessException::new);
+/// /                .orElseThrow(IllegalAccessException::new);
 //        System.out.println(mangaById);
 //
 //        Manga newManga = MangaRepository.findByTitle("Drifters")

@@ -3,17 +3,19 @@ package javacore.ZZFThreads.test;
 //Threads type daemon(não tem tanta predomincancia,
 // cuida do garbage collector, e se o java for encerrado daemon encerra e o user fica)  x
 // User(Java encerra o programa quando sao terminadas)
-class ThreadExample extends Thread{
+class ThreadExample extends Thread {
     private char c;
-    public ThreadExample(char c){
+
+    public ThreadExample(char c) {
         this.c = c;
     }
+
     @Override
-    public void run(){
+    public void run() {
         System.out.print(Thread.currentThread().getName());
-        for(int i = 0; i< 500; i++){
+        for (int i = 0; i < 500; i++) {
             System.out.print(c);
-            if ( i% 100 == 0){
+            if (i % 100 == 0) {
                 System.out.println();
             }
         }
@@ -24,6 +26,7 @@ class ThreadExample extends Thread{
         }
     }
 }
+
 public class ThreadTest01 {
     public static void main(String[] args) {
         Thread t1 = new Thread(new ThreadExample('A'), "T1A");

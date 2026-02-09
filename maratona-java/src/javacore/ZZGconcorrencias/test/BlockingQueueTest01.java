@@ -2,6 +2,7 @@ package javacore.ZZGconcorrencias.test;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
+
 //Este código resolve o problema clássico de comunicação segura entre múltiplas threads
 //que produzem e consomem dados em velocidades diferentes. Em sistemas reais, é comum
 //existirem threads responsáveis por receber tarefas (produtores) e outras responsáveis

@@ -10,6 +10,7 @@ public class Pessoa {
         this.nome = nome;
         this.cpf = cpf;
     }
+
     @Override
     public String toString() {
         return "Pessoa{" +
@@ -17,9 +18,10 @@ public class Pessoa {
                 ", cpf=" + cpf +
                 '}';
     }
+
     @Override
     public boolean equals(Object o) {
-        if ( this == o ) return true;
+        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Pessoa pessoa = (Pessoa) o;
         return pessoa.equals(cpf);

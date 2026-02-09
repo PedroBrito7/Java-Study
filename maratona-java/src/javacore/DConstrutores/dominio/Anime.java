@@ -7,7 +7,7 @@ public class Anime {
     private String genero;
     private String estudio;
 
-    public Anime(String name,String tipo, int ep, String genero){
+    public Anime(String name, String tipo, int ep, String genero) {
         this();
         this.name = name;
         this.tipo = tipo;
@@ -15,19 +15,20 @@ public class Anime {
         this.genero = genero;
     }
 
-    public Anime(String name,String tipo, int ep, String genero, String estudio){
-        this(name,tipo,ep,genero);
+    public Anime(String name, String tipo, int ep, String genero, String estudio) {
+        this(name, tipo, ep, genero);
         this.name = name;
         this.tipo = tipo;
         this.ep = ep;
         this.genero = genero;
         this.estudio = estudio;
     }
-    public Anime(){
+
+    public Anime() {
         System.out.println(" Dentro do construtor sem args");
     }
 
-    public void print(){
+    public void print() {
         System.out.println(this.name);
         System.out.println(this.tipo);
         System.out.println(this.ep);
@@ -43,22 +44,27 @@ public class Anime {
         this.genero = genero;
     }
 
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
-    public void setTipo(String tipo){
+
+    public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-    public String getName(){
+
+    public String getName() {
         return this.name;
     }
-    public String getTipo(){
+
+    public String getTipo() {
         return this.tipo;
     }
-    public void setEp(int ep){
+
+    public void setEp(int ep) {
         this.ep = ep;
     }
-    public int getEp(){
+
+    public int getEp() {
         return this.ep;
     }
 }

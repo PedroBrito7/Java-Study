@@ -13,10 +13,10 @@ public class EmailDeliveryService implements Runnable {
     public void run() {
         String threadName = Thread.currentThread().getName();
         System.out.println(threadName + " starting to deliver emails...");
-        while(members.isOpen() || members.pendingEmails() > 0 ){
+        while (members.isOpen() || members.pendingEmails() > 0) {
             try {
                 String email = members.retrieveEmail();
-                if(email == null) continue;
+                if (email == null) continue;
                 System.out.println(threadName + " sending email for " + email);
                 Thread.sleep(2000);
                 System.out.println(threadName + " sended email with sucess for " + email);

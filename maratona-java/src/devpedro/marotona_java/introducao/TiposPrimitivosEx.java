@@ -8,9 +8,9 @@ Eu <nome>, morando no endereço <endereço>, confirmo que recebi o salário de <
 na data <data>.
         * */
         String name = "Pedro";
-        String endereco="Jd Acacio";
+        String endereco = "Jd Acacio";
         double wageDouble = 2000.0D;
 
-        System.out.println(" Eu "+ name + ", morando no endereco "+ endereco+ ",confirmo que recebi o slario de " + wageDouble);
+        System.out.println(" Eu " + name + ", morando no endereco " + endereco + ",confirmo que recebi o slario de " + wageDouble);
     }
 }

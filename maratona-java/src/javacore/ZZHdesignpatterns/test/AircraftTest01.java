@@ -7,7 +7,8 @@ public class AircraftTest01 {
         bookSeat("1A");
         bookSeat("1A");
     }
-    private static void bookSeat(String seat){
+
+    private static void bookSeat(String seat) {
         Aircraft aircraft = new Aircraft("787-900"); // pegando assentos do 787-900 imaginando que seja único
         System.out.println(aircraft.bookSeat(seat));
     }

@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class StreamTest11 {
-    private static List<LightNovel> lightNovels = new ArrayList<>( List.of(
-            new LightNovel("Tensei Shittara", 8.99, Category.FANTASY ),
+    private static List<LightNovel> lightNovels = new ArrayList<>(List.of(
+            new LightNovel("Tensei Shittara", 8.99, Category.FANTASY),
             new LightNovel("Naruto", 3.99, Category.FANTASY),
             new LightNovel("Overloard", 5.99, Category.FANTASY),
             new LightNovel("violet evergarden", 2.99, Category.DRAMA),
@@ -18,6 +18,7 @@ public class StreamTest11 {
             new LightNovel("Fullmetal alchemist", 1.99, Category.FANTASY),
             new LightNovel("Monogatari", 4.00, Category.FANTASY)
     ));
+
     public static void main(String[] args) {
         System.out.println(lightNovels.stream().count());
         System.out.println(lightNovels.stream().collect(Collectors.counting()));

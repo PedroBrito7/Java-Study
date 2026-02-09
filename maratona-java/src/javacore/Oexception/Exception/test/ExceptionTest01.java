@@ -7,12 +7,13 @@ public class ExceptionTest01 {
     public static void main(String[] args) {
         criarNovoArquivo();
     }
-    private static void criarNovoArquivo(){
+
+    private static void criarNovoArquivo() {
         File file = new File("arquivo\\ teste.txt");
         try {
-           boolean gerado = file.createNewFile();
+            boolean gerado = file.createNewFile();
             System.out.println("arquivo criado " + gerado);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
 

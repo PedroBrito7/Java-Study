@@ -5,7 +5,7 @@ import java.time.temporal.ChronoField;
 
 public class LocalTimeTest01 {
     public static void main(String[] args) {
-        LocalTime time = LocalTime.of(23,32,12);
+        LocalTime time = LocalTime.of(23, 32, 12);
         LocalTime timeNow = LocalTime.now();
         System.out.println(timeNow);
         System.out.println(time);
@@ -16,7 +16,6 @@ public class LocalTimeTest01 {
 
         System.out.println(LocalTime.MIDNIGHT); // pegar 00h pegar inicio do dia usa MIN
         System.out.println(LocalTime.MAX); //  Para pegar o maximo 23:59:59.99
-
 
 
     }

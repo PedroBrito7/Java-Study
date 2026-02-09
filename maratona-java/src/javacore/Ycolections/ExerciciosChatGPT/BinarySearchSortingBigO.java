@@ -13,9 +13,9 @@ public class BinarySearchSortingBigO {
 
         int index = Collections.binarySearch(ids, 7);
 
-        if(index >=0){
+        if (index >= 0) {
             System.out.println("Encontrado na posição " + index);
-        }else {
+        } else {
             System.out.println("Não encontrado");
         }
 

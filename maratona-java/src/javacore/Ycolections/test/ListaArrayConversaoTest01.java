@@ -16,13 +16,13 @@ public class ListaArrayConversaoTest01 {
         System.out.println("--------------------");
 
         Integer[] numerosArray = new Integer[3];
-        numerosArray[0] = 1 ;
-        numerosArray[1] = 2 ;
-        numerosArray[2] = 3 ;
+        numerosArray[0] = 1;
+        numerosArray[1] = 2;
+        numerosArray[2] = 3;
         // transformar esse cara em lista assim :
         List<Integer> ArrayToList = Arrays.asList(numerosArray);
         // agora pra alterar algum
-        ArrayToList.set(0,12);
+        ArrayToList.set(0, 12);
         System.out.println(Arrays.toString(numerosArray)); // to string para aparacer
         System.out.println(ArrayToList);
 
@@ -30,9 +30,7 @@ public class ListaArrayConversaoTest01 {
         numerosList.add(15);// adicionar um numero na lista
         System.out.println(numerosList);
 
-        List<String> strings = Arrays.asList("1","23","4","5","6");
-
-
+        List<String> strings = Arrays.asList("1", "23", "4", "5", "6");
 
 
     }

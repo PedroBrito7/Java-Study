@@ -22,8 +22,8 @@ public class PatternMatchetTest02 {
         System.out.println("Índice: 0123456789 ");
         System.out.println("Regex: " + regex);
         System.out.println("Posições encontradas: ");
-        while (matcher.find()){
-            System.out.print(matcher.start()+" " +matcher.group()+ "\n");
+        while (matcher.find()) {
+            System.out.print(matcher.start() + " " + matcher.group() + "\n");
         }
     }
 }

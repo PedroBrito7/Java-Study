@@ -33,7 +33,6 @@ public class StreamTest13 {
         System.out.println(collect);
 
 
-
         // Map <Category, Map <Promotion, List<lightNovel>>>
         Map<Category, Map<PROMOTION, List<LightNovel>>> collect1 = lightNovels.stream().collect(Collectors.groupingBy(LightNovel::getCategory,
                 Collectors.groupingBy(ln ->

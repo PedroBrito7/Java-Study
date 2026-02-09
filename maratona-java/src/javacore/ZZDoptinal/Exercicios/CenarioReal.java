@@ -15,6 +15,7 @@ public class CenarioReal {
             return nome;
         }
     }
+
     static Optional<Usuario> buscarUsuarioPorEmail(String email) {
         Usuario user = new Usuario("Pedro"); // simulação
 
@@ -24,6 +25,7 @@ public class CenarioReal {
 
         return Optional.empty();
     }
+
     public static void main(String[] args) {
         Usuario user = new Usuario("Pedro");
         Optional<Usuario> nomeExiste = Optional.ofNullable(user);
@@ -32,8 +34,8 @@ public class CenarioReal {
                 .map(Usuario::getNome)
                 .map(String::toUpperCase)
                 .ifPresentOrElse(
-                System.out::println,
-                () -> System.out.println("Usuário não encontrado")
+                        System.out::println,
+                        () -> System.out.println("Usuário não encontrado")
                 );
 
 

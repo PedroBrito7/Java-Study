@@ -7,15 +7,15 @@ public class ScannerTest02 {
         String texto = "Levi, Eren, Mikasa, true, 200";
         Scanner sc = new Scanner(texto);
         sc.useDelimiter(",");
-        while(sc.hasNext()){
+        while (sc.hasNext()) {
 
-            if(sc.hasNextInt()){
-                int i =sc.nextInt();
-                System.out.println("int "+ i);
-            }else if (sc.hasNextBoolean()){
+            if (sc.hasNextInt()) {
+                int i = sc.nextInt();
+                System.out.println("int " + i);
+            } else if (sc.hasNextBoolean()) {
                 boolean b = sc.hasNextBoolean();
                 System.out.println("Boolean" + b);
-            }else{
+            } else {
                 System.out.println(sc.next());
             }
         }

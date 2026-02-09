@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class AircraftSingletonLazy {
-    private static  AircraftSingletonLazy INSTANCE;
+    private static AircraftSingletonLazy INSTANCE;
     private final Set<String> availableSeats = new HashSet<>();
     private final String name;
 
@@ -17,8 +17,8 @@ public class AircraftSingletonLazy {
         availableSeats.add("1B");
     }
 
-    public static AircraftSingletonLazy getInstance(){
-        if(INSTANCE == null){
+    public static AircraftSingletonLazy getInstance() {
+        if (INSTANCE == null) {
             synchronized (AircraftSingletonLazy.class) {
                 if (INSTANCE == null) {
                     INSTANCE = new AircraftSingletonLazy("787-900");
@@ -28,7 +28,7 @@ public class AircraftSingletonLazy {
         return INSTANCE;
     }
 
-    public boolean bookSeat(String seat){
+    public boolean bookSeat(String seat) {
         return availableSeats.remove(seat);
     }
 }

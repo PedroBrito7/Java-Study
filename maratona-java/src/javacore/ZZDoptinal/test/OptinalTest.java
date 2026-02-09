@@ -14,7 +14,8 @@ public class OptinalTest {
         String name = findName("pedro");
 
     }
-    private static String findName(String name){
+
+    private static String findName(String name) {
         // vc tem um nome, caso tenha esse nome ele vai retornar o nome, caso não tenha ele retorna null
         List<String> list = List.of("Pedro", "DevNinja");
         int i = list.indexOf(name);

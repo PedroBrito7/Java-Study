@@ -1,8 +1,15 @@
-package javacore.ZZIjdbc.conn;
+package ZZIjdbc.conn;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class ConnectionFactory {
-    // java.sql = Connection, Statement, ResultSet, DriverManger
-    // para cada banco vai ser uma interface padrao do banco
-    
+    public static Connection getConnection() throws SQLException {
+        String url = "jdbc:mysql://localhost:3319/anime_store";
+        String username = "root";
+        String password = "root";
+        return DriverManager.getConnection(url, username, password);
 
+    }
 }

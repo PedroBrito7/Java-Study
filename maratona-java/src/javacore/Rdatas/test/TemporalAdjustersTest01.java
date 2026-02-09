@@ -28,13 +28,10 @@ public class TemporalAdjustersTest01 {
 
         now = LocalDate.now().with(TemporalAdjusters.lastDayOfMonth());
         System.out.println(now);
-        System.out.println(now.getDayOfWeek());now = LocalDate.now().with(TemporalAdjusters.previous(DayOfWeek.THURSDAY));
+        System.out.println(now.getDayOfWeek());
+        now = LocalDate.now().with(TemporalAdjusters.previous(DayOfWeek.THURSDAY));
         System.out.println(now);
         System.out.println(now.getDayOfWeek());
-
-
-
-
 
 
     }

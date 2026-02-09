@@ -7,7 +7,7 @@ public class DiaSemanaTest {
         // 1. Declara a variável que será testada
         DiaSemana dia = DiaSemana.QUARTA;
         System.out.println("O dia de hoje é: " + dia.name()); // name ja e um metodo q ja tem no objeto do enum
-        switch (dia){
+        switch (dia) {
             case SEGUNDA:
             case TERCA:
             case QUARTA:

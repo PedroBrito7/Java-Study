@@ -33,6 +33,6 @@ public class StreamTest14 {
         // para remover o optional acima faca o de baixo
 
         lightNovels.stream().collect(groupingBy(LightNovel::getCategory,
-                Collectors.collectingAndThen(Collectors.maxBy(Comparator.comparing(LightNovel::getPrice)),Optional::get)));
+                Collectors.collectingAndThen(Collectors.maxBy(Comparator.comparing(LightNovel::getPrice)), Optional::get)));
     }
 }

@@ -12,7 +12,7 @@ public class LocalDateTest01 {
         System.out.println(new Date());
         System.out.println(Calendar.getInstance());
         System.out.println(Month.JANUARY.getValue());
-        LocalDate date = LocalDate.of(2027,Month.JANUARY,26);
+        LocalDate date = LocalDate.of(2027, Month.JANUARY, 26);
         LocalDate agora = LocalDate.now();
         System.out.println("----- Métodos para saber: ---------");
         System.out.println(date.getYear());

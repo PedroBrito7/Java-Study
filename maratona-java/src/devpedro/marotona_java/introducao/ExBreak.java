@@ -6,7 +6,7 @@ public class ExBreak {
         double valorTotal = 30000;
         for (int installment = 1; installment <= valorTotal; installment++) {
             double valorInstallment = valorTotal / installment;
-            if (valorInstallment < 1000){
+            if (valorInstallment < 1000) {
                 break;
             }
             System.out.println("Parcela " + installment + " R$ " + valorInstallment);

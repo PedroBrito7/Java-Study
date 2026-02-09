@@ -11,7 +11,8 @@ public class CarroRentavelService {
             new Carro("Audi"),
             new Carro("Mercedes")
     ));
-    public Carro buscarCarroDisponivel(){
+
+    public Carro buscarCarroDisponivel() {
         System.out.println("Buscando carro disponivel...");
         Carro carro = carroDisponiveis.remove(0);
         System.out.println("Alugando o carro: " + carro);
@@ -19,7 +20,8 @@ public class CarroRentavelService {
         System.out.println(carroDisponiveis);
         return carro;
     }
-    public void retornarCarroAlugado(Carro carro){
+
+    public void retornarCarroAlugado(Carro carro) {
         System.out.println("Devolvendo o carro: " + carro);
         carroDisponiveis.add(carro);
         System.out.println("Carros disponiveis para alugar: ");

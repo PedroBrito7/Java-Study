@@ -14,7 +14,7 @@ public class SmartphoneListTest01 {
         smartphones.add(s1);
         smartphones.add(s2);
         smartphones.add(s3);
-        for (Smartphone smartphone : smartphones){
+        for (Smartphone smartphone : smartphones) {
             System.out.println(smartphone);
         }
         Smartphone s4 = new Smartphone("2222", "Pixel");

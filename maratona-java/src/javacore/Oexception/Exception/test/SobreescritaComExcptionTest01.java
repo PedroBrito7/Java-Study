@@ -9,10 +9,10 @@ import java.io.FileNotFoundException;
 public class SobreescritaComExcptionTest01 {
     public static void main(String[] args) {
         Pessoa p = new Pessoa();
-        Funcionario f= new Funcionario();
+        Funcionario f = new Funcionario();
         try {
             f.salvar();
-        } catch (LoginInvalidoException  e) {
+        } catch (LoginInvalidoException e) {
             e.printStackTrace();
         }
     }

@@ -7,7 +7,7 @@ public class FuncioarioTest01 {
         Funcionario funcionario = new Funcionario();
         funcionario.setName("Sanji");
         funcionario.setAge(23);
-        funcionario.setWages(new double []{1200, 987.32, 2000});
+        funcionario.setWages(new double[]{1200, 987.32, 2000});
         funcionario.printDatas();
 
     }

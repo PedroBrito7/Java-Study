@@ -8,7 +8,7 @@ import java.nio.file.Path;
 
 public class Main {
     public static void main(String[] args) {
-        Person p= new Person("Pedro", 19);
+        Person p = new Person("Pedro", 19);
         Person person = deserializar();
         System.out.println("Name: " + person.getName());
         System.out.println("Age: " + person.getAge());

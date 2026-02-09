@@ -5,8 +5,8 @@ import java.util.List;
 
 public class ListTest01 {
     public static void main(String[] args) {
-       List <String> nomes = new ArrayList<>();
-       List <String> nomes2 = new ArrayList<>();
+        List<String> nomes = new ArrayList<>();
+        List<String> nomes2 = new ArrayList<>();
         nomes.add("Pedro");
         nomes.add("Henrique");
         nomes2.add("DevBolado");
@@ -16,7 +16,7 @@ public class ListTest01 {
 
 //        System.out.println(nomes.remove("Pedro")); remove atraves dos equals, pq o objeto e uma string
 
-        for(String nome : nomes){
+        for (String nome : nomes) {
             System.out.println(nome);
         }
 
@@ -28,7 +28,7 @@ public class ListTest01 {
             System.out.println(nomes.get(i));
         }
 
-        List <Integer> numeros = new ArrayList<>();
+        List<Integer> numeros = new ArrayList<>();
         numeros.add(1);
     }
 }

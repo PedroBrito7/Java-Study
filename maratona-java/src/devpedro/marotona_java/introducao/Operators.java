@@ -3,9 +3,9 @@ package devpedro.marotona_java.introducao;
 public class Operators {
     public static void main(String[] args) {
         // + - / *
-       int number01 = 10;
-       int number02 = 20;
-       double resultado = number01 / (double) number02;
+        int number01 = 10;
+        int number02 = 20;
+        double resultado = number01 / (double) number02;
         System.out.println(resultado);
         // %
         int rest = 21 % 7;
@@ -17,10 +17,10 @@ public class Operators {
         boolean isDezIgualaVinte = 10 == 20;
         boolean isDezIgualaDez = 10 == 10;
         boolean isDezDiferenteDez = 10 != 10;
-        System.out.println("isDezmenorQueVinte " +isDezMenorQueVinte);
-        System.out.println("isDezMaiorQueVinte " +isDezMaiorQueVinte);
-        System.out.println("isDezIgualaVinte " +isDezIgualaVinte);
-        System.out.println("isDezIgualDez " +isDezIgualaDez);
+        System.out.println("isDezmenorQueVinte " + isDezMenorQueVinte);
+        System.out.println("isDezMaiorQueVinte " + isDezMaiorQueVinte);
+        System.out.println("isDezIgualaVinte " + isDezIgualaVinte);
+        System.out.println("isDezIgualDez " + isDezIgualaDez);
         // && (AND)  || (or)  ! (not)
         int idade = 29;
         float salario = 3500F;
@@ -34,7 +34,7 @@ public class Operators {
         float valorPsCinco = 5000F;
 
         boolean isPsCincoCompravel = valorTotalContaCorrente > valorPsCinco || valorTotalContaPoupanca > valorPsCinco;
-        System.out.println("isPsCincoCompravel " +isPsCincoCompravel);
+        System.out.println("isPsCincoCompravel " + isPsCincoCompravel);
 
         // = += -= *= /= %=
         double bonus = 1800;
@@ -45,11 +45,11 @@ public class Operators {
 
         //
         int contador = 0;
-        contador +=1; // contador = contador +1
-        contador ++;
-        contador --;
-        ++ contador;
-        -- contador;
+        contador += 1; // contador = contador +1
+        contador++;
+        contador--;
+        ++contador;
+        --contador;
         int contador2 = 0;
         System.out.println(contador2++);
         System.out.println(++contador2);

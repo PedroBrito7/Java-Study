@@ -17,7 +17,7 @@ public class RelatorioFuncionario {
                 new Funcionario("Alice", "Financeiro", 6000)
         );
         funcionarios.stream()
-                .filter(d ->d.getDepartamento().equals("TI"))
+                .filter(d -> d.getDepartamento().equals("TI"))
                 .filter(p -> p.getSalario() > 4000)
                 .sorted(Comparator.comparingDouble(Funcionario::getSalario).reversed())
                 .map(Funcionario::getNome)

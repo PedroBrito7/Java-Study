@@ -16,9 +16,8 @@ public class BinarySearchTest01 {
         // index  0,1,2,3
         // value  0,2,3,4
         Collections.sort(numeros);
-        System.out.println(Collections.binarySearch(numeros,0)); // key é o value
-        System.out.println(Collections.binarySearch(numeros,-1));
-
+        System.out.println(Collections.binarySearch(numeros, 0)); // key é o value
+        System.out.println(Collections.binarySearch(numeros, -1));
 
 
     }

@@ -1,9 +1,9 @@
 package javacore.Kenum.ExerciciosEnum.dominio;
 
 public enum Moeda {
-    REAL (1),
-    DOLAR (5.25),
-    EURO (6.25);
+    REAL(1),
+    DOLAR(5.25),
+    EURO(6.25);
     private final double taxaDeConversao;
 
     Moeda(double taxaDeConversao) {

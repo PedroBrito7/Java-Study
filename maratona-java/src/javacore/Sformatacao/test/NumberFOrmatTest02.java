@@ -6,7 +6,7 @@ import java.util.Locale;
 
 public class NumberFOrmatTest02 {
     public static void main(String[] args) {
-        Locale localeBR = new Locale("pt","BR");
+        Locale localeBR = new Locale("pt", "BR");
         Locale localeJ = Locale.JAPAN;
         Locale localeIT = Locale.ITALIAN;
         NumberFormat[] nfa = new NumberFormat[4];
@@ -15,19 +15,16 @@ public class NumberFOrmatTest02 {
         nfa[2] = NumberFormat.getCurrencyInstance(localeBR);
         nfa[3] = NumberFormat.getCurrencyInstance(localeIT);
         double valor = 10_000.2130;
-        for (NumberFormat numberFormat : nfa){
+        for (NumberFormat numberFormat : nfa) {
             numberFormat.setMaximumFractionDigits(2);
             System.out.println(numberFormat.format(valor));
         }
         String valorString = "1_000.2130";
-        try{
+        try {
             System.out.println(nfa[1].parse(valorString));
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
-
-
 
 
     }

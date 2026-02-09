@@ -2,22 +2,23 @@ package javacore.Zgenerics.test;
 
 import java.util.List;
 
-public class WildcardTest02{
+public class WildcardTest02 {
     public static void main(String[] args) {
-        List <Cachorro> cachorros = List.of(new Cachorro(), new Cachorro());
-        List <Gato> gatos = List.of(new Gato(), new Gato());
+        List<Cachorro> cachorros = List.of(new Cachorro(), new Cachorro());
+        List<Gato> gatos = List.of(new Gato(), new Gato());
         //printConsulta(cachorros);// uma vez q é compilado ele nao sabe oq ta dentro da lista
 
 
-
     }
-    private static void printConsulta(List<? extends Animal> animals){
+
+    private static void printConsulta(List<? extends Animal> animals) {
         for (Animal animal : animals) {
             animal.consulta();
         } // generics com extends nao permite adicionar elementos
 
     }
-    private static void printConsultaAnimal(List<? super Animal> animals){
+
+    private static void printConsultaAnimal(List<? super Animal> animals) {
         animals.add(new Cachorro());
         animals.add(new Gato());
     } // generics com super permite adicionar elementos

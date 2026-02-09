@@ -10,12 +10,12 @@ public class StreamTest04 {
         List<List<String>> devdojo = new ArrayList<>();
         List<String> graphicDesigners = List.of("Wiliam siane", "Catarina santos", "Sandy");
         List<String> developers = List.of("Wiliam siane", "Pedro", "Ana");
-        List<String> students = List.of( "édipo", "Gustavo", "tomate", "Banana");
+        List<String> students = List.of("édipo", "Gustavo", "tomate", "Banana");
         devdojo.add(graphicDesigners);
         devdojo.add(developers);
         devdojo.add(students);
-        for(List<String> people : devdojo){
-            for(String person :people){
+        for (List<String> people : devdojo) {
+            for (String person : people) {
                 System.out.println(person);
             }
         }

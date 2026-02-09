@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Func {
-   static class Funcionario {
+    static class Funcionario {
         private String nome;
         private double salario;
 
@@ -22,13 +22,13 @@ public class Func {
             return salario;
         }
 
-       @Override
-       public String toString() {
-           return "Funcionario{" +
-                   "nome='" + nome + '\'' +
-                   '}';
-       }
-   }
+        @Override
+        public String toString() {
+            return "Funcionario{" +
+                    "nome='" + nome + '\'' +
+                    '}';
+        }
+    }
 
     public static void main(String[] args) {
         List<Funcionario> funcionarios = new ArrayList<>(List.of(

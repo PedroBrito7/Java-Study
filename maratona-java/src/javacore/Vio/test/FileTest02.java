@@ -16,12 +16,12 @@ public class FileTest02 {
             e.printStackTrace();
         }
         File fileRenamed = new File(fileDir, "arq_renomeado_txt");
-        boolean isRenamed =  fileArquivoDiretorio.renameTo(fileRenamed);
+        boolean isRenamed = fileArquivoDiretorio.renameTo(fileRenamed);
         System.out.println(isRenamed);
 
 
         File dirRenamed = new File("pasta2");
-        boolean isDirRenamed1 =  fileDir.renameTo(dirRenamed);
+        boolean isDirRenamed1 = fileDir.renameTo(dirRenamed);
         System.out.println(isDirRenamed1);
     }
 }

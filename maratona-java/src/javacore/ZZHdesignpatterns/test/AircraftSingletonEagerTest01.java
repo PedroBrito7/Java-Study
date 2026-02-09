@@ -8,7 +8,8 @@ public class AircraftSingletonEagerTest01 {
         bookSeat("1A");
         bookSeat("1A");
     }
-    private static void bookSeat(String seat){
+
+    private static void bookSeat(String seat) {
         System.out.println(AircraftSingletonEager.getInstance());
         AircraftSingletonEager aircraft = AircraftSingletonEager.getInstance(); // pegando assentos do 787-900 imaginando que seja único
         System.out.println(aircraft.bookSeat(seat));

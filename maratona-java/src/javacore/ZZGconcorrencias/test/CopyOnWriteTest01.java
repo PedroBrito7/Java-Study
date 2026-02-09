@@ -11,9 +11,9 @@ import java.util.concurrent.TimeUnit;
 // precisa ser tudo imutavel
 public class CopyOnWriteTest01 {
     public static void main(String[] args) {
-      List<Integer> list = new CopyOnWriteArrayList<>();
-      // vc tem o valor [1]
-      // ele copia e transforma no [1,2] smp criando novas (mas da b.o na memoria)
+        List<Integer> list = new CopyOnWriteArrayList<>();
+        // vc tem o valor [1]
+        // ele copia e transforma no [1,2] smp criando novas (mas da b.o na memoria)
         for (int i = 0; i < 2000; i++) {
             list.add(i);
         }
@@ -26,10 +26,10 @@ public class CopyOnWriteTest01 {
                 throw new RuntimeException(e);
             }
         };
-        Runnable runnableRemover= () -> {
+        Runnable runnableRemover = () -> {
             for (int i = 0; i < 500; i++) {
                 System.out.printf("%s removed %d%n", Thread.currentThread().getName(), i);
-                        }
+            }
         };
         new Thread(runnableIterator).start();
         new Thread(runnableIterator).start();

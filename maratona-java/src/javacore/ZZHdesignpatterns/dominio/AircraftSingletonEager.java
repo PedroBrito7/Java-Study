@@ -17,11 +17,11 @@ public class AircraftSingletonEager {
         availableSeats.add("1B");
     }
 
-    public static AircraftSingletonEager getInstance(){
+    public static AircraftSingletonEager getInstance() {
         return INSTANCE;
     }
 
-    public boolean bookSeat(String seat){
+    public boolean bookSeat(String seat) {
         return availableSeats.remove(seat);
     }
 }

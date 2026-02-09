@@ -19,7 +19,7 @@ public class MethodReferenceTest04 {
         animeList.sort(animeComparators::compareByEpisodesNonStatic);
         System.out.println(animeList);
         // bi funciton recebe um s , i e retorna um R
-        BiFunction<String, Integer, Anime> animeBiFunction =  (title,episodes) -> new Anime(title,episodes);
+        BiFunction<String, Integer, Anime> animeBiFunction = (title, episodes) -> new Anime(title, episodes);
         BiFunction<String, Integer, Anime> animeBiFunction2 = Anime::new;
         System.out.println(animeBiFunction2.apply("Super onze", 29));
 

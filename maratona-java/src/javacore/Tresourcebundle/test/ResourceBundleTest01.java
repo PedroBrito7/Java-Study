@@ -10,7 +10,7 @@ public class ResourceBundleTest01 {
         System.out.println(bundle.getString("hello"));
         System.out.println(bundle.getString("good.morning"));
         System.out.println(bundle.getString("hi"));
-        bundle = ResourceBundle.getBundle("messages",new Locale("pt", "BR"));
+        bundle = ResourceBundle.getBundle("messages", new Locale("pt", "BR"));
         System.out.println(bundle.getString("hello"));
         System.out.println(bundle.getString("good.morning"));
 
@@ -22,7 +22,6 @@ public class ResourceBundleTest01 {
         // messages_en.propeties; dps dessa forma >
         // messages.propeties; finaliza aq
         System.out.println(bundle.getString("hi"));
-
 
 
     }

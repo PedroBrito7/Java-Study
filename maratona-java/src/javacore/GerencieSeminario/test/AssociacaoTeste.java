@@ -7,11 +7,11 @@ import javacore.GerencieSeminario.dominio.Seminario;
 
 public class AssociacaoTeste {
     public static void main(String[] args) {
-        Local local = new Local ("rua nestor joao de oliveira");
+        Local local = new Local("rua nestor joao de oliveira");
         Aluno aluno = new Aluno("Luffy", 18);
         Professor professor = new Professor("Barba Branca", "Pirata");
         Aluno[] alunosParaSeminario = {aluno};
-        Seminario seminario = new Seminario ("Onde achar o one piece",alunosParaSeminario, local);
+        Seminario seminario = new Seminario("Onde achar o one piece", alunosParaSeminario, local);
 
         Seminario[] seminariosDisponiveis = {seminario};
 
