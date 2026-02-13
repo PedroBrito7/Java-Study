@@ -1,4 +1,10 @@
-ProjetosJava.iml
-out
-target
+# IntelliJ
+.idea/
+*.iml
+out/
 
+# Maven
+target/
+
+# Logs
+*.log
