@@ -180,5 +180,31 @@ public class ProducerRepository {
         return List.of();
     }
 
+    // muda o determinado valor
+
+    public static void updateProducerName(int id, String newName) {
+        String sql = "SELECT id, name FROM anime_store.producer WHERE id = " + id;
+
+        try (Connection conn = ConnectionFactory.getConnection();
+             Statement stmt = conn.createStatement(
+                     ResultSet.TYPE_SCROLL_SENSITIVE,
+                     ResultSet.CONCUR_UPDATABLE);
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            if (rs.next()) {
+                rs.updateString("name", newName); // altera o valor na linha atual
+                rs.updateRow(); // confirma a atualização no banco
+                System.out.println("Registro atualizado com sucesso!");
+            } else {
+                System.out.println("Nenhum registro encontrado com esse ID.");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
 }
 
