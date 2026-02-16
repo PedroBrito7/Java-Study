@@ -171,7 +171,10 @@ public class ProducerRepository {
 
             log.info("Row Absolute?'{}'", rs.isFirst());// Confirma se é ou nao, tem o is pra todos os de cima
 
-
+            // Retornar uma linha
+            log.info("Row Absolute?'{}'", rs.relative(-1));//  Retornar uma linha
+            log.info("Row number '{}'", rs.getRow());
+            log.info(Producer.builder().id(rs.getInt("id")).name(rs.getString("name")).build());
 
 
         } catch (SQLException e) {
