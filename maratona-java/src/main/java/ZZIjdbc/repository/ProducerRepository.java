@@ -164,18 +164,6 @@ public class ProducerRepository {
             log.info("Row number '{}'", rs.getRow());
             log.info(Producer.builder().id(rs.getInt("id")).name(rs.getString("name")).build());
 
-            // Retornar uma linha
-            log.info("Row Absolute?'{}'", rs.relative(-1));//  Retornar uma linha
-            log.info("Row number '{}'", rs.getRow());
-            log.info(Producer.builder().id(rs.getInt("id")).name(rs.getString("name")).build());
-
-            log.info("Row Absolute?'{}'", rs.isFirst());// Confirma se é ou nao, tem o is pra todos os de cima
-
-            // Retornar uma linha
-            log.info("Row Absolute?'{}'", rs.relative(-1));//  Retornar uma linha
-            log.info("Row number '{}'", rs.getRow());
-            log.info(Producer.builder().id(rs.getInt("id")).name(rs.getString("name")).build());
-
 
         } catch (SQLException e) {
             log.error("Error while trying to find by name producers", e);
@@ -205,6 +193,34 @@ public class ProducerRepository {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    public static List<Producer>  findByNamePreparedStatement(String name) {
+        log.info("Finding producers by name");
+        String sql = "SELECT * FROM anime_store.producer WHERE NAME LIKE ? ;";
+        List<Producer> producers = new ArrayList<>();
+        try (Connection conn = ConnectionFactory.getConnection();
+             PreparedStatement ps = createdPreparedStatement(conn,sql,name);
+        ResultSet rs = ps.executeQuery()){ // pré compilando o prepareStatement -
+            while (rs.next()) {
+                Producer producer = Producer
+                        .builder()
+                        .id(rs.getInt("id"))
+                        .name(rs.getString("name"))
+                        .build();
+
+                producers.add(producer);
+            }
+
+        } catch (SQLException e) {
+            log.error("Error while trying to find all producers", e);
+        }
+        return producers;
+    }
+
+    private static PreparedStatement createdPreparedStatement(Connection conn,String sql,String name) throws SQLException{
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, "%"+name+"%");
+        return ps;
     }
 
 
