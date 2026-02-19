@@ -20,6 +20,11 @@ public class ProducerService {
             case 2:
                 delete();
                 break;
+            case 3:
+                save();
+                break;
+            case 4:
+                update();
             default:
                 throw new IllegalArgumentException("Not valid option");
         }
@@ -43,7 +48,33 @@ public class ProducerService {
         if("s".equalsIgnoreCase(choice));
         ProducerRepository.delete(id);
     }
+    private static void save() {
+        System.out.println("Type the producer name to save");
+        String name = SCANNER.nextLine();
 
+        Producer producer = Producer
+                .builder()
+                .name(name)
+                .build();
+
+        ProducerRepository.save(producer);
+    }
+    private static void update() {
+        System.out.println("Type the id of the producer you want to update");
+        findByName();
+        int id = Integer.parseInt(SCANNER.nextLine());
+
+        System.out.println("Type the new name");
+        String newName = SCANNER.nextLine();
+
+        Producer producer = Producer
+                .builder()
+                .id(id)
+                .name(newName)
+                .build();
+
+        ProducerRepository.update(producer);
+    }
 
 
 }

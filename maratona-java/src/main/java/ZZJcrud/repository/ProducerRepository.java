@@ -40,13 +40,50 @@ public class ProducerRepository {
         return ps;
     }
     public static void delete(int id) {
-        String sql = "DELETE FROM `anime_store`.`producer` WHERE (`id` = ?);";
-        try (Connection conn = ZZIjdbc.conn.ConnectionFactory.getConnection();
-             Statement stmt = conn.createStatement()) {
-            int rowsAffected = stmt.executeUpdate(sql);
-            log.info("Deleted producer '{}' in database, rows affected '{}' ", id);
+        try (Connection conn = ConnectionFactory.getConnection();
+             PreparedStatement ps = createdPreparedStatement(conn, id)) {
+
+            int rowsAffected = ps.executeUpdate();
+            log.info("Deleted producer '{}' in database, rows affected '{}'", id, rowsAffected);
+
         } catch (SQLException e) {
             log.error("Error while trying to delete producer '{}'", id, e);
+        }
+    }
+
+    public static void save(Producer producer) {
+        String sql = "INSERT INTO anime_store.producer (name) VALUES (?);"; //O ? é um placeholder será substituído pelo valor
+
+        try (Connection conn = ConnectionFactory.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, producer.getName());
+
+            int rowsAffected = ps.executeUpdate();
+            log.info("Inserted producer '{}' in database, rows affected '{}'",
+                    producer.getName(), rowsAffected);
+
+        } catch (SQLException e) {
+            log.error("Error while trying to insert producer '{}'",
+                    producer.getName(), e);
+        }
+    }
+    public static void update(Producer producer) {
+        String sql = "UPDATE anime_store.producer SET name = ? WHERE id = ?;";
+
+        try (Connection conn = ConnectionFactory.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, producer.getName());
+            ps.setInt(2, producer.getId());
+
+            int rowsAffected = ps.executeUpdate();
+            log.info("Updated producer '{}', rows affected '{}'",
+                    producer.getId(), rowsAffected);
+
+        } catch (SQLException e) {
+            log.error("Error while trying to update producer '{}'",
+                    producer.getId(), e);
         }
     }
     private static PreparedStatement createdPreparedStatement(Connection conn, Integer id) throws SQLException{
